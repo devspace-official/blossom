@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Development | DevSpace</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar scrolled">
+    <a href="index.html" class="logo"><span class="logo-bracket">D</span>evSpace</a>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+        <span class="lang-en">AR</span>
+        <span class="lang-ar">EN</span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="article-hero">
+    <div class="container">
+      <a href="index.html#services" class="article-back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        <span data-en="Back to Services" data-ar="العودة للخدمات">Back to Services</span>
+      </a>
+      <div style="font-size:4rem;margin-bottom:1rem;">&#128241;</div>
+      <h1 data-en="App Development" data-ar="تطوير التطبيقات">App Development</h1>
+      <p class="lead" data-en="Cross-platform mobile applications with native performance and beautiful UI/UX design." data-ar="تطبيقات الهاتف متعددة المنصات بأداء أصلي وتصميم جميل.">Cross-platform mobile applications with native performance and beautiful UI/UX design.</p>
+      <div class="service-techs-hero">
+        <span>React Native</span><span>Flutter</span><span>Expo</span><span>Firebase</span><span>TypeScript</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-body">
+    <div class="container">
+      <div class="article-content">
+
+        <h2>How App Development Works</h2>
+        <p>Cross-platform app development allows me to build one codebase that runs on both iOS and Android, saving time and cost while maintaining native-like performance.</p>
+
+        <h2>Step 1: Requirements & UI Design</h2>
+        <p>I start by understanding your app's purpose, target users, and core features. Then I design intuitive, beautiful interfaces that follow platform guidelines.</p>
+        <ul>
+          <li>User journey mapping</li>
+          <li>Wireframe &amp; prototype design</li>
+          <li>Platform-specific UI guidelines (Material Design, HIG)</li>
+        </ul>
+
+        <h2>Step 2: Cross-Platform Development</h2>
+        <p>I choose the best framework for your project. React Native for JavaScript developers or Flutter for those who prefer Dart.</p>
+
+        <h3>React Native</h3>
+        <pre><code>import React, { useState } from 'react';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+
+export default function TaskApp() {
+  const [tasks, setTasks] = useState([]);
+
+  const addTask = (title) => {
+    setTasks([...tasks, { id: Date.now().toString(), title, done: false }]);
+  };
+
+  return (
+    &lt;View style={styles.container}&gt;
+      &lt;Text style={styles.title}&gt;My Tasks&lt;/Text&gt;
+      &lt;FlatList
+        data={tasks}
+        keyExtractor={item =&gt; item.id}
+        renderItem={({ item }) =&gt;
+          &lt;TouchableOpacity style={styles.task}&gt;
+            &lt;Text&gt;{item.title}&lt;/Text&gt;
+          &lt;/TouchableOpacity&gt;
+        }
+      /&gt;
+    &lt;/View&gt;
+  );
+}</code></pre>
+
+        <h3>Flutter</h3>
+        <pre><code>import 'package:flutter/material.dart';
+
+void main() => runApp(TaskApp());
+
+class TaskApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('My Tasks')),
+        body: ListView(
+          children: [
+            ListTile(leading: Icon(Icons.check_circle), title: Text('Build mobile app')),
+            ListTile(leading: Icon(Icons.circle_outlined), title: Text('Deploy to stores')),
+          ],
+        ),
+      ),
+    );
+  }
+}</code></pre>
+
+        <h2>Step 3: Backend Integration</h2>
+        <p>Every app needs a backend. I connect your app to cloud services for authentication, data storage, and push notifications.</p>
+        <pre><code>// Firebase Authentication
+import auth from '@react-native-firebase/auth';
+
+const signIn = async (email, password) => {
+  const result = await auth().signInWithEmailAndPassword(email, password);
+  return result.user;
+};
+
+// Firestore Database
+import firestore from '@react-native-firebase/firestore';
+
+const saveTask = async (userId, task) => {
+  await firestore()
+    .collection('users')
+    .doc(userId)
+    .collection('tasks')
+    .add(task);
+};</code></pre>
+
+        <h2>Step 4: Testing on Real Devices</h2>
+        <p>Before release, I test on real iOS and Android devices to ensure smooth performance, proper gestures, and no crashes.</p>
+        <ul>
+          <li>Real device testing (iOS &amp; Android)</li>
+          <li>Performance profiling</li>
+          <li>Battery usage optimization</li>
+          <li>Memory leak detection</li>
+        </ul>
+
+        <h2>Step 5: App Store Deployment</h2>
+        <p>I handle the entire submission process to both Apple App Store and Google Play Store, including screenshots, descriptions, and compliance.</p>
+        <pre><code># Build for production
+npx expo build:android
+npx expo build:ios
+
+# Or with EAS
+eas build --platform all
+eas submit --platform all</code></pre>
+
+        <blockquote>One codebase, two platforms. Your app reaches millions of users on both iOS and Android without maintaining two separate codebases.</blockquote>
+
+        <h2>What You Get</h2>
+        <ul>
+          <li>One codebase for iOS and Android</li>
+          <li>Native-like performance and UI</li>
+          <li>Push notifications</li>
+          <li>Offline data support</li>
+          <li>App Store &amp; Play Store submission</li>
+          <li>Analytics integration</li>
+          <li>30 days free support</li>
+        </ul>
+
+        <div class="article-tags">
+          <span>React Native</span><span>Flutter</span><span>Expo</span><span>Firebase</span><span>iOS</span><span>Android</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg2);text-align:center;">
+    <div class="container">
+      <h2 class="section-title" style="margin-bottom:1rem;">Ready to build your app?</h2>
+      <p style="color:var(--text-secondary);margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto;">Let's create a mobile app that your users will love.</p>
+      <a href="index.html#contact" class="btn btn-primary magnetic" style="display:inline-flex;">
+        <span>Start Your App</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 DevSpace. Crafted with care.</p>
+        <a href="index.html#home" class="back-to-top magnetic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    themeToggle.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('portfolio-theme', next);
+    });
+    const langToggle = document.getElementById('langToggle');
+    let currentLang = localStorage.getItem('portfolio-lang') || 'en';
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      localStorage.setItem('portfolio-lang', lang);
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const text = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+        if (text) el.textContent = text;
+      });
+    }
+    if (currentLang === 'ar') setLanguage('ar');
+    langToggle.addEventListener('click', () => setLanguage(currentLang === 'en' ? 'ar' : 'en'));
+  </script>
+</body>
+</html>

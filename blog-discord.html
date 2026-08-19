@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discord Bot Development Guide 2025 | Blog</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar scrolled" id="navbar">
+    <a href="index.html" class="logo"><span class="logo-bracket">D</span>evSpace</a>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+        <span class="lang-en">AR</span>
+        <span class="lang-ar">EN</span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="article-hero">
+    <div class="container">
+      <a href="index.html#blog" class="article-back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        <span data-en="Back to Blog" data-ar="العودة للمدونة">Back to Blog</span>
+      </a>
+      <div class="article-meta">
+        <span class="blog-date">Nov 28, 2025</span>
+        <span class="blog-category">Discord</span>
+      </div>
+      <h1 data-en="Discord Bot Development Guide 2025" data-ar="دليل تطوير بوت ديسكورد 2025">Discord Bot Development Guide 2025</h1>
+      <p class="lead" data-en="A complete guide to building feature-rich Discord bots with Python and discord.js, from setup to deployment." data-ar="دليل شامل لبناء بوتات ديسكورد غنية بالميزات باستخدام Python وdiscord.js، من الإعداد إلى النشر.">A complete guide to building feature-rich Discord bots with Python and discord.js, from setup to deployment.</p>
+    </div>
+  </section>
+
+  <section class="article-body">
+    <div class="container">
+      <div class="article-content">
+
+        <h2 data-en="Getting Started" data-ar="البدء">Getting Started</h2>
+        <p data-en="Discord bots are applications that interact with users on Discord servers. In 2025, there are two main approaches: Python with discord.py and JavaScript with discord.js. Both are excellent choices." data-ar="بوتات ديسكورد هي تطبيقات تتفاعل مع المستخدمين على سيرفرات ديسكورد. في 2025، هناك نهجان رئيسيان: Python مع discord.py وJavaScript مع discord.js. كلاهما اختيار ممتاز.">Discord bots are applications that interact with users on Discord servers. In 2025, there are two main approaches: Python with discord.py and JavaScript with discord.js. Both are excellent choices.</p>
+
+        <h2 data-en="1. Setting Up Your Bot" data-ar="1. إعداد البوت">1. Setting Up Your Bot</h2>
+        <p data-en="First, create a bot application on the Discord Developer Portal and invite it to your server:" data-ar="أولاً، أنشئ تطبيق بوت على بوابة مطور ديسكورد وادعُه إلى سيرفرك:">First, create a bot application on the Discord Developer Portal and invite it to your server:</p>
+
+        <pre><code># Python (discord.py)
+pip install discord.py
+
+import discord
+from discord.ext import commands
+
+bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
+
+@bot.event
+async def on_ready():
+    print(f'{bot.user} has logged in!')
+
+bot.run('YOUR_BOT_TOKEN')</code></pre>
+
+        <h2 data-en="2. Slash Commands" data-ar="2. أوامر السلاش">2. Slash Commands</h2>
+        <p data-en="Slash commands are the modern way to interact with bots. They provide autocomplete, descriptions, and a better UX:" data-ar="أوامر السلاش هي الطريقة الحديثة للتفاعل مع البوتات. توفر إكمال تلقائي وصفاً وتجربة مستخدم أفضل:">Slash commands are the modern way to interact with bots. They provide autocomplete, descriptions, and a better UX:</p>
+
+        <pre><code>@bot.tree.command(name="hello", description="Say hello!")
+async def hello(interaction: discord.Interaction):
+    await interaction.response.send_message(
+        f"Hello, {interaction.user.mention}! 👋"
+    )
+
+# Sync commands on ready
+@bot.event
+async def on_ready():
+    await bot.tree.sync()
+    print('Commands synced!')</code></pre>
+
+        <h2 data-en="3. Moderation System" data-ar="3. نظام الإشراف">3. Moderation System</h2>
+        <p data-en="Every good bot needs moderation tools. Here's a basic kick command with permission checks:" data-ar="كل بوت جيد يحتاج أدوات إشراف. إليك أمر طرد أساسي مع فحص الصلاحيات:">Every good bot needs moderation tools. Here's a basic kick command with permission checks:</p>
+
+        <pre><code>@bot.tree.command(name="kick", description="Kick a member")
+@discord.app_commands.describe(member="The member to kick", reason="Reason")
+async def kick(interaction: discord.Interaction, member: discord.Member, reason: str = "No reason"):
+    if not interaction.user.guild_permissions.kick_members:
+        await interaction.response.send_message("No permission!", ephemeral=True)
+        return
+
+    await member.kick(reason=reason)
+    await interaction.response.send_message(f"Kicked {member.mention}: {reason}")</code></pre>
+
+        <h2 data-en="4. Database Integration" data-ar="4. تكامل قاعدة البيانات">4. Database Integration</h2>
+        <p data-en="For persistent data like user levels, economies, or custom settings, use a database:" data-ar="للحفظ الدائم للبيانات مثل مستويات المستخدمين أو الأنظمة الاقتصادية أو الإعدادات المخصصة، استخدم قاعدة بيانات:">For persistent data like user levels, economies, or custom settings, use a database:</p>
+
+        <pre><code>import sqlite3
+
+db = sqlite3.connect('bot_data.db')
+cursor = db.cursor()
+
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS levels (
+        user_id INTEGER PRIMARY KEY,
+        xp INTEGER DEFAULT 0,
+        level INTEGER DEFAULT 1
+    )
+''')
+db.commit()</code></pre>
+
+        <h2 data-en="5. Deployment" data-ar="5. النشر">5. Deployment</h2>
+        <p data-en="Deploy your bot 24/7 using services like Railway, Render, or a VPS. Always use environment variables for your bot token:" data-ar="نشر بوطك على مدار الساعة باستخدام خدمات مثل Railway أو Render أو VPS. دائماً متغيرات البيئة لرمز البوت:">Deploy your bot 24/7 using services like Railway, Render, or a VPS. Always use environment variables for your bot token:</p>
+
+        <pre><code># Use environment variables - NEVER hardcode tokens
+import os
+bot.run(os.getenv('DISCORD_TOKEN'))</code></pre>
+
+        <blockquote data-en="Security tip: Never commit your bot token to Git. Always use .env files and add them to .gitignore." data-ar="نصيحة أمنية: لا تفعل رمز البوت في Git أبداً. دائماً استخدم ملفات .env وأضفها إلى .gitignore.">Security tip: Never commit your bot token to Git. Always use .env files and add them to .gitignore.</blockquote>
+
+        <h2 data-en="Conclusion" data-ar="الخاتمة">Conclusion</h2>
+        <p data-en="Discord bot development is a rewarding skill. Start with the basics, master slash commands, and gradually add features like databases and moderation. The Discord developer community is incredibly supportive!" data-ar="تطوير بوتات ديسكورد هو مهارة مجزية. ابدأ بالأساسيات، وأتقن أوامر السلاش، وأضف الميزات تدريجياً مثل قواعد البيانات والإشراف. مجتمع مطووري ديسكورد داعم بشكل لا يصدق!">Discord bot development is a rewarding skill. Start with the basics, master slash commands, and gradually add features like databases and moderation. The Discord developer community is incredibly supportive!</p>
+
+        <div class="article-tags">
+          <span>Discord</span><span>Python</span><span>discord.py</span><span>Bots</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Your Name. Crafted with care.</p>
+        <a href="index.html#home" class="back-to-top magnetic" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    themeToggle.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('portfolio-theme', next);
+    });
+    const langToggle = document.getElementById('langToggle');
+    let currentLang = localStorage.getItem('portfolio-lang') || 'en';
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      localStorage.setItem('portfolio-lang', lang);
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const text = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+        if (text) el.textContent = text;
+      });
+    }
+    if (currentLang === 'ar') setLanguage('ar');
+    langToggle.addEventListener('click', () => setLanguage(currentLang === 'en' ? 'ar' : 'en'));
+  </script>
+</body>
+</html>

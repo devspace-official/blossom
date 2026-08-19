@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Development | DevSpace</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar scrolled" id="navbar">
+    <a href="index.html" class="logo"><span class="logo-bracket">D</span>evSpace</a>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+        <span class="lang-en">AR</span>
+        <span class="lang-ar">EN</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="article-hero">
+    <div class="container">
+      <a href="index.html#services" class="article-back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        <span data-en="Back to Services" data-ar="العودة للخدمات">Back to Services</span>
+      </a>
+      <div class="service-hero-icon" style="font-size:4rem;margin-bottom:1rem;">&#127760;</div>
+      <h1 data-en="Web Development" data-ar="تطوير الويب">Web Development</h1>
+      <p class="lead" data-en="Custom, responsive websites built with modern frameworks. From landing pages to complex web applications." data-ar="مواقع مخصصة ومتجاوبة مبنية بأحدث الأطر البرمجية. من صفحات الهبوط إلى تطبيقات الويب المعقدة.">Custom, responsive websites built with modern frameworks. From landing pages to complex web applications.</p>
+      <div class="service-techs-hero">
+        <span>React</span><span>Next.js</span><span>Vue</span><span>TypeScript</span><span>Tailwind CSS</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="article-body">
+    <div class="container">
+      <div class="article-content">
+
+        <h2 data-en="How It Works" data-ar="كيف يعمل">How It Works</h2>
+        <p data-en="Building a professional website involves a structured process that ensures quality, performance, and your vision coming to life. Here's my step-by-step approach:" data-ar="بناء موقع احترافي يتطلب عملية منظمة تضمن الجودة والأداء وتحقيق رؤيتك. إليك نهجي خطوة بخطوة:">Building a professional website involves a structured process that ensures quality, performance, and your vision coming to life. Here's my step-by-step approach:</p>
+
+        <h2 data-en="Step 1: Discovery & Planning" data-ar="الخطوة 1: الاستكشاف والتخطيط">Step 1: Discovery & Planning</h2>
+        <p data-en="Every project starts with understanding your goals. I analyze your target audience, competitors, and requirements to create a detailed project roadmap." data-ar="كل مشروع يبدأ بفهم أهدافك. أحلل جمهورك المستهدف ومنافسيك ومتطلباتك لإنشاء خارطة طريق تفصيلية.">Every project starts with understanding your goals. I analyze your target audience, competitors, and requirements to create a detailed project roadmap.</p>
+        <ul>
+          <li data-en="Define project goals and target audience" data-ar="تحديد أهداف المشروع والجمهور المستهدف">Define project goals and target audience</li>
+          <li data-en="Competitor analysis and market research" data-ar="تحليل المنافسين وأبحاث السوق">Competitor analysis and market research</li>
+          <li data-en="Technology stack selection" data-ar="اختيار حزمة التقنيات">Technology stack selection</li>
+          <li data-en="Project timeline and milestones" data-ar="الجدول الزمني وأسامة المشروع">Project timeline and milestones</li>
+        </ul>
+
+        <h2 data-en="Step 2: Design & prototyping" data-ar="الخطوة 2: التصميم والنماذج الأولية">Step 2: Design & prototyping</h2>
+        <p data-en="I create wireframes and interactive prototypes that visualize the final product. You get to see and approve the design before any code is written." data-ar="أنشئ مخططات سلكية ونماذج أولية تفاعلية ت_visualize المنتج النهائي. يمكنك الموافقة على التصميم قبل كتابة أي كود.">I create wireframes and interactive prototypes that visualize the final product. You get to see and approve the design before any code is written.</p>
+        <pre><code>// Design System Example
+const designSystem = {
+  colors: {
+    primary: '#6c63ff',
+    secondary: '#a78bfa',
+    background: '#06060a',
+  },
+  fonts: {
+    heading: 'Space Grotesk',
+    body: 'Inter',
+    code: 'JetBrains Mono',
+  },
+  spacing: {
+    xs: '0.25rem',
+    sm: '0.5rem',
+    md: '1rem',
+    lg: '2rem',
+    xl: '4rem',
+  },
+};</code></pre>
+
+        <h2 data-en="Step 3: Development" data-ar="الخطوة 3: التطوير">Step 3: Development</h2>
+        <p data-en="Using modern frameworks, I build your website with clean, maintainable code. Every component is crafted for performance and scalability." data-ar="باستخدام الأطر الحديثة، أبني موقعك بكود نظيف وقابل للصيانة. كل مكون مصمم للأداء والقابلية للتوسع.">Using modern frameworks, I build your website with clean, maintainable code. Every component is crafted for performance and scalability.</p>
+
+        <h3 data-en="React & Next.js" data-ar="React و Next.js">React & Next.js</h3>
+        <p data-en="React allows me to build reusable UI components that update efficiently. Next.js adds server-side rendering, automatic routing, and optimized performance." data-ar="React يسمح لي ببناء مكونات واجهة قابلة لإعادة الاستخدام تتحدث بكفاءة. Next.js يضيف العرض من جانب الخادم والتوجيه التلقائي والأداء المحسّن.">React allows me to build reusable UI components that update efficiently. Next.js adds server-side rendering, automatic routing, and optimized performance.</p>
+
+        <pre><code>// React Component Example
+function HeroSection({ title, description }) {
+  return (
+    &lt;section className="hero"&gt;
+      &lt;h1&gt;{title}&lt;/h1&gt;
+      &lt;p&gt;{description}&lt;/p&gt;
+      &lt;button className="btn-primary"&gt;
+        Get Started
+      &lt;/button&gt;
+    &lt;/section&gt;
+  );
+}</code></pre>
+
+        <h3 data-en="Vue.js" data-ar="Vue.js">Vue.js</h3>
+        <p data-en="Vue offers an approachable, versatile framework perfect for projects that need rapid development with excellent documentation." data-ar="Vue يقدم إطار عمل سهل ومتعدد الاستخدامات مثالي للمشاريع التي تحتاج تطوراً سريعاً مع توثيق ممتاز.">Vue offers an approachable, versatile framework perfect for projects that need rapid development with excellent documentation.</p>
+
+        <h2 data-en="Step 4: Testing & Optimization" data-ar="الخطوة 4: الاختبار والتحسين">Step 4: Testing & Optimization</h2>
+        <p data-en="Before launch, I thoroughly test your website across all devices and browsers. Performance optimization ensures fast loading times." data-ar="قبل الإطلاق، أختبر موقعك بشكل شامل عبر جميع الأجهزة والمتصفحات. تحسين الأداء يضمن أوقات تحميل سريعة.">Before launch, I thoroughly test your website across all devices and browsers. Performance optimization ensures fast loading times.</p>
+        <ul>
+          <li data-en="Cross-browser compatibility testing" data-ar="اختبار التوافق عبر المتصفحات">Cross-browser compatibility testing</li>
+          <li data-en="Mobile responsiveness verification" data-ar="التحقق من التجاوب مع الأجهزة المحمولة">Mobile responsiveness verification</li>
+          <li data-en="Performance auditing (Lighthouse score 90+)" data-ar="تدقيق الأداء (Lighthouse score 90+)">Performance auditing (Lighthouse score 90+)</li>
+          <li data-en="SEO optimization" data-ar="تحسين محركات البحث">SEO optimization</li>
+          <li data-en="Accessibility compliance (WCAG)" data-ar="الامتثال لإمكانية الوصول (WCAG)">Accessibility compliance (WCAG)</li>
+        </ul>
+
+        <h2 data-en="Step 5: Deployment & Launch" data-ar="الخطوة 5: النشر والإطلاق">Step 5: Deployment & Launch</h2>
+        <p data-en="I deploy your website to production servers with SSL certificates, CDN setup, and monitoring. Your site goes live with zero downtime." dataar="أنشر موقعك على خوادم الإنتاج مع شهادات SSL وإعداد CDN ومراقبة. موقعك يعمل مباشرة بدون أي توقف.">I deploy your website to production servers with SSL certificates, CDN setup, and monitoring. Your site goes live with zero downtime.</p>
+
+        <pre><code># Deployment Pipeline
+1. Code pushed to GitHub
+2. Automated tests run
+3. Build optimized for production
+4. Deploy to hosting (Vercel/Netlify/AWS)
+5. SSL certificate auto-configured
+6. CDN worldwide distribution
+7. Monitoring & alerts active</code></pre>
+
+        <h2 data-en="What You Get" data-ar="التي تحصل عليه">What You Get</h2>
+        <ul>
+          <li data-en="Fully responsive website (mobile, tablet, desktop)" data-ar="موقع متجاوب بالكامل (محمول، لوحي، سطح مكتب)">Fully responsive website (mobile, tablet, desktop)</li>
+          <li data-en="Clean, semantic HTML5 & CSS3" data-ar="HTML5 وCSS3 نظيف ومعناطي">Clean, semantic HTML5 & CSS3</li>
+          <li data-en="Fast loading speed (under 2 seconds)" data-ar="سرعة تحميل سريعة (أقل من ثانيتين)">Fast loading speed (under 2 seconds)</li>
+          <li data-en="SEO-optimized structure" data-ar="هيكل محسّن لمحركات البحث">SEO-optimized structure</li>
+          <li data-en="Contact forms & interactive elements" data-ar="نماذج تواصل وعناصر تفاعلية">Contact forms & interactive elements</li>
+          <li data-en="Analytics integration (Google Analytics)" data-ar="تكامل التحليلات (Google Analytics)">Analytics integration (Google Analytics)</li>
+          <li data-en="Free hosting setup" data-ar="إعداد استضافة مجانية">Free hosting setup</li>
+          <li data-en="30 days free support after launch" data-ar="30 يوم دعم مجاني بعد الإطلاق">30 days free support after launch</li>
+        </ul>
+
+        <blockquote data-en="Every website I build is tailored to your specific needs. No templates, no shortcuts — just clean, professional code that works." data-ar="كل موقع أبنيه مخصص لاحتياجاتك. لا قوالب، لا اختصارات — فقط كود نظيف واحترافي يعمل.">Every website I build is tailored to your specific needs. No templates, no shortcuts — just clean, professional code that works.</blockquote>
+
+        <div class="article-tags">
+          <span>React</span><span>Next.js</span><span>Vue</span><span>JavaScript</span><span>Responsive Design</span><span>SEO</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background:var(--bg2);text-align:center;">
+    <div class="container">
+      <h2 class="section-title" style="margin-bottom:1rem;" data-en="Ready to build your website?" data-ar="جاهز لبناء موقعك؟">Ready to build your website?</h2>
+      <p style="color:var(--text-secondary);margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto;" data-en="Let's discuss your project and bring your ideas to life." data-ar="لنناقش مشروعك ونحول أفكارك إلى واقع.">Let's discuss your project and bring your ideas to life.</p>
+      <a href="index.html#contact" class="btn btn-primary magnetic" style="display:inline-flex;">
+        <span data-en="Start Your Project" data-ar="ابدأ مشروعك">Start Your Project</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 DevSpace. Crafted with care.</p>
+        <a href="index.html#home" class="back-to-top magnetic" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    themeToggle.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('portfolio-theme', next);
+    });
+    const langToggle = document.getElementById('langToggle');
+    let currentLang = localStorage.getItem('portfolio-lang') || 'en';
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      localStorage.setItem('portfolio-lang', lang);
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const text = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+        if (text) el.textContent = text;
+      });
+    }
+    if (currentLang === 'ar') setLanguage('ar');
+    langToggle.addEventListener('click', () => setLanguage(currentLang === 'en' ? 'ar' : 'en'));
+  </script>
+</body>
+</html>

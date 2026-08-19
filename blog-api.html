@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building Scalable APIs with Node.js | Blog</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar scrolled" id="navbar">
+    <a href="index.html" class="logo"><span class="logo-bracket">D</span>evSpace</a>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+        <span class="lang-en">AR</span>
+        <span class="lang-ar">EN</span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="article-hero">
+    <div class="container">
+      <a href="index.html#blog" class="article-back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        <span data-en="Back to Blog" data-ar="العودة للمدونة">Back to Blog</span>
+      </a>
+      <div class="article-meta">
+        <span class="blog-date">Dec 15, 2025</span>
+        <span class="blog-category">JavaScript</span>
+      </div>
+      <h1 data-en="Building Scalable APIs with Node.js" data-ar="بناء واجهات API قابلة للتوسع مع Node.js">Building Scalable APIs with Node.js</h1>
+      <p class="lead" data-en="Learn how to design and implement RESTful APIs that can handle millions of requests with optimal performance." data-ar="تعلم كيفية تصميم وتنفيذ واجهات RESTful يمكنها التعامل مع ملايين الطلبات بأداء مثالي.">Learn how to design and implement RESTful APIs that can handle millions of requests with optimal performance.</p>
+    </div>
+  </section>
+
+  <section class="article-body">
+    <div class="container">
+      <div class="article-content">
+
+        <h2 data-en="Why Node.js for APIs?" data-ar="لماذا Node.js للواجهات؟">Why Node.js for APIs?</h2>
+        <p data-en="Node.js has become the go-to runtime for building APIs thanks to its non-blocking I/O model, vast ecosystem, and excellent performance characteristics. Whether you're building a small microservice or a large-scale API, Node.js provides the tools you need." data-ar="أصبح Node.js هو وقت التشغيل الأساسي لبناء واجهات API بفضل نموذج I/O غير القابل للكتابة ونظامه البيئي الواسع وأداءه الممتاز. سواء كنت تبني خدمة مصغرة صغيرة أو واجهة كبيرة، يوفر Node.js الأدوات التي تحتاجها.">Node.js has become the go-to runtime for building APIs thanks to its non-blocking I/O model, vast ecosystem, and excellent performance characteristics. Whether you're building a small microservice or a large-scale API, Node.js provides the tools you need.</p>
+
+        <h2 data-en="1. Project Structure" data-ar="1. هيكل المشروع">1. Project Structure</h2>
+        <p data-en="A well-organized project structure is the foundation of a scalable API. Here's a recommended folder structure:" data-ar="هيكل المشروع المنظم هو أساس واجهة API قابلة للتوسع. إليك هيكل مجلدات موصى به:">A well-organized project structure is the foundation of a scalable API. Here's a recommended folder structure:</p>
+
+        <pre><code>src/
+  controllers/    # Route handlers
+  services/       # Business logic
+  models/         # Database models
+  middleware/      # Custom middleware
+  routes/         # API routes
+  utils/          # Helper functions
+  config/         # Configuration files
+  validators/     # Input validation</code></pre>
+
+        <h2 data-en="2. Input Validation" data-ar="2. التحقق من المدخلات">2. Input Validation</h2>
+        <p data-en="Never trust user input. Use a validation library like Joi or Zod to validate all incoming data:" data-ar="لا تثق أبداً في مدخلات المستخدم. استخدم مكتبة تحقق مثل Joi أو Zod للتحقق من جميع البيانات الواردة:">Never trust user input. Use a validation library like Joi or Zod to validate all incoming data:</p>
+
+        <pre><code>const { z } = require('zod');
+
+const createUserSchema = z.object({
+  name: z.string().min(2).max(50),
+  email: z.string().email(),
+  password: z.string().min(8).max(128),
+});
+
+app.post('/api/users', validate(createUserSchema), async (req, res) => {
+  const user = await UserService.create(req.body);
+  res.status(201).json(user);
+});</code></pre>
+
+        <h2 data-en="3. Error Handling" data-ar="3. معالجة الأخطاء">3. Error Handling</h2>
+        <p data-en="Implement a centralized error handling middleware to ensure consistent error responses across your API:" data-ar="نفذ وسيط معالجة أخطاء مركزي لضمان ردود أخطاء متسقة عبر واجهتك:">Implement a centralized error handling middleware to ensure consistent error responses across your API:</p>
+
+        <pre><code>class AppError extends Error {
+  constructor(message, statusCode) {
+    super(message);
+    this.statusCode = statusCode;
+    this.isOperational = true;
+  }
+}
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  const status = err.statusCode || 500;
+  const message = err.isOperational ? err.message : 'Internal server error';
+  res.status(status).json({ status, message });
+});</code></pre>
+
+        <h2 data-en="4. Rate Limiting" data-ar="4. تقييد المعدل">4. Rate Limiting</h2>
+        <p data-en="Protect your API from abuse by implementing rate limiting:" data-ar="protect your API from abuse by implementing rate limiting:">Protect your API from abuse by implementing rate limiting:</p>
+
+        <pre><code>const rateLimit = require('express-rate-limit');
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per window
+  message: 'Too many requests, please try again later',
+});
+
+app.use('/api/', limiter);</code></pre>
+
+        <h2 data-en="5. Caching Strategy" data-ar="5. استراتيجية التخزين المؤقت">5. Caching Strategy</h2>
+        <p data-en="Use Redis for caching frequently accessed data to reduce database load:" data-ar="استخدم Redis لتخزين البيانات المتكررة للوصول لتقليل الحمل على قاعدة البيانات:">Use Redis for caching frequently accessed data to reduce database load:</p>
+
+        <pre><code>const redis = require('redis');
+const client = redis.createClient();
+
+async function getCachedData(key, fetchFn, ttl = 3600) {
+  const cached = await client.get(key);
+  if (cached) return JSON.parse(cached);
+
+  const data = await fetchFn();
+  await client.setEx(key, ttl, JSON.stringify(data));
+  return data;
+}</code></pre>
+
+        <blockquote data-en="Pro tip: Always cache invalidation patterns carefully. Stale data can lead to serious bugs in production." data-ar="نصيحة احترافية: دائماً صمم أنماط إلغاء التخزين المؤقت بعناية. البيانات القديمة قد تؤدي إلى أخطاء خطيرة في الإنتاج.">Pro tip: Always cache invalidation patterns carefully. Stale data can lead to serious bugs in production.</blockquote>
+
+        <h2 data-en="Conclusion" data-ar="الخاتمة">Conclusion</h2>
+        <p data-en="Building scalable APIs with Node.js requires thoughtful architecture, proper error handling, and performance optimization. Start with these fundamentals and iterate as your API grows." data-ar="بناء واجهات API قابلة للتوسع مع Node.js يتطلب هندسة معمارية مدروسة ومعالجة أخطاء مناسبة وتحسين الأداء. ابدأ بالأساسيات هذه وطورها مع نمو واجهتك.">Building scalable APIs with Node.js requires thoughtful architecture, proper error handling, and performance optimization. Start with these fundamentals and iterate as your API grows.</p>
+
+        <div class="article-tags">
+          <span>Node.js</span><span>REST API</span><span>JavaScript</span><span>Backend</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Your Name. Crafted with care.</p>
+        <a href="index.html#home" class="back-to-top magnetic" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    themeToggle.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('portfolio-theme', next);
+    });
+
+    // Language Toggle
+    const langToggle = document.getElementById('langToggle');
+    let currentLang = localStorage.getItem('portfolio-lang') || 'en';
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      localStorage.setItem('portfolio-lang', lang);
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const text = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+        if (text) el.textContent = text;
+      });
+    }
+    if (currentLang === 'ar') setLanguage('ar');
+    langToggle.addEventListener('click', () => setLanguage(currentLang === 'en' ? 'ar' : 'en'));
+  </script>
+</body>
+</html>

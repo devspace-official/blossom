@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevSpace | Developer Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- ============================================================
+    GOOGLE IDENTITY SERVICES (GIS) — Client-Side OAuth 2.0
+    Replace YOUR_GOOGLE_CLIENT_ID below with your actual Client ID.
+    See the setup instructions comment block at the bottom of app.js.
+  ============================================================ -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-line"></div>
+      <span class="preloader-text" data-en="LOADING" data-ar="جاري التحميل">LOADING</span>
+    </div>
+  </div>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <nav class="navbar" id="navbar">
+    <a href="#home" class="logo">
+      <span class="logo-bracket">D</span>evSpace
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="nav-link active" data-en="Home" data-ar="الرئيسية">Home</a></li>
+      <li><a href="#about" class="nav-link" data-en="About" data-ar="عني">About</a></li>
+      <li><a href="#services" class="nav-link" data-en="Services" data-ar="الخدمات">Services</a></li>
+      <li><a href="#pricing" class="nav-link" data-en="Pricing" data-ar="الأسعار">Pricing</a></li>
+      <li><a href="#projects" class="nav-link" data-en="Projects" data-ar="المشاريع">Projects</a></li>
+      <li><a href="#blog" class="nav-link" data-en="Blog" data-ar="المدونة">Blog</a></li>
+      <li><a href="#faq" class="nav-link" data-en="FAQ" data-ar="الأسئلة">FAQ</a></li>
+      <li><a href="#contact" class="nav-link" data-en="Contact" data-ar="تواصل">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+        <span class="lang-en">AR</span>
+        <span class="lang-ar">EN</span>
+      </button>
+      <a href="#contact" class="nav-cta" data-en="Let's Talk" data-ar="تواصل معي">Let's Talk</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="status-dot"></span>
+        <span data-en="Available for work" data-ar="متاح للعمل">Available for work</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="hero-line" data-en="I craft" data-ar="أبني">I craft</span>
+        <span class="hero-line gradient-text" id="typedText"></span>
+        <span class="cursor" id="cursor">|</span>
+      </h1>
+      <p class="hero-description" data-en="A full-stack developer specializing in building exceptional digital experiences. Currently focused on creating accessible, human-centered products." data-ar="مطور Full-Stack متخصص في بناء تجارب رقمية استثنائية. أركز حالياً على إنتاج منتجات سهلة الاستخدام ومتاحة للجميع.">
+        A full-stack developer specializing in building exceptional digital experiences. Currently focused on creating accessible, human-centered products.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary magnetic">
+          <span data-en="View Work" data-ar="عرض الأعمال">View Work</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-ghost magnetic">
+          <span data-en="Get In Touch" data-ar="تواصل معي">Get In Touch</span>
+        </a>
+        <a href="cv.html" class="btn btn-outline magnetic">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-en="Download CV" data-ar="تحميل السيرة">Download CV</span>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number" data-target="50">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label" data-en="Projects Completed" data-ar="مشروع مكتمل">Projects Completed</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-target="30">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label" data-en="Happy Clients" data-ar="عميل سعيد">Happy Clients</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" data-target="3">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label" data-en="Years Experience" data-ar="سنوات خبرة">Years Experience</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="orbit-system">
+        <div class="orbit orbit-1"><div class="orbit-dot"></div></div>
+        <div class="orbit orbit-2"><div class="orbit-dot"></div></div>
+        <div class="orbit orbit-3"><div class="orbit-dot"></div></div>
+        <div class="code-card glass">
+          <div class="code-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="code-filename">developer.ts</span>
+          </div>
+          <pre><code><span class="ln"> 1</span>  <span class="kw">interface</span> <span class="type">Developer</span> {
+<span class="ln"> 2</span>    <span class="prop">name</span>: <span class="str">"Your Name"</span>;
+<span class="ln"> 3</span>    <span class="prop">role</span>: <span class="str">"Full-Stack Dev"</span>;
+<span class="ln"> 4</span>    <span class="prop">skills</span>: <span class="type">TechStack</span>;
+<span class="ln"> 5</span>    <span class="prop">passion</span>: <span class="str">"Building the web"</span>;
+<span class="ln"> 6</span>    <span class="fn">build</span>(): <span class="type">Product</span>;
+<span class="ln"> 7</span>  }</code></pre>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span data-en="Scroll Down" data-ar="مرر للأسفل">Scroll Down</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="About Me" data-ar="عني">About Me</span>
+        <h2 class="section-title"><span data-en="Turning ideas into" data-ar="تحويل الأفكار إلى">Turning ideas into</span><br><span class="gradient-text" data-en="digital reality" data-ar="واقع رقمي">digital reality</span></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p class="lead" data-en="I'm a developer who believes in the power of clean code and thoughtful design to solve real problems." data-ar="أنا مطور أؤمن بقوة الكود النظيف والتصميم المدروس لحل المشكلات الحقيقية.">I'm a developer who believes in the power of clean code and thoughtful design to solve real problems.</p>
+          <p data-en="With experience spanning frontend, backend, and everything in between, I bring a holistic approach to every project. I thrive on turning complex challenges into elegant, user-friendly solutions." data-ar="بخبرة تشمل الواجهة الأمامية والخلفية وكل ما بينهما، أحضر نهجاً شاملاً لكل مشروع. أزدهر في تحويل التحديات المعقدة إلى حلول أنيقة وسهلة الاستخدام.">With experience spanning frontend, backend, and everything in between, I bring a holistic approach to every project. I thrive on turning complex challenges into elegant, user-friendly solutions.</p>
+          <p data-en="When I'm not at my keyboard, I'm exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community." data-ar="عندما لا أكون على لوحة المفاتيح، أستكشف تقنيات جديدة أو أساهم في مشاريع مفتوحة المصدر أو أشارك المعرفة مع مجتمع المطورين.">When I'm not at my keyboard, I'm exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.</p>
+          <div class="about-highlights">
+            <div class="highlight"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-en="Clean, maintainable code" data-ar="كود نظيف وقابل للصيانة">Clean, maintainable code</span></div>
+            <div class="highlight"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-en="Performance-first approach" data-ar="نهج الأداء أولاً">Performance-first approach</span></div>
+            <div class="highlight"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-en="Responsive & accessible design" data-ar="تصميم متجاوب ومتاح">Responsive & accessible design</span></div>
+            <div class="highlight"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-en="Agile development workflow" data-ar="سير عمل تطوير رشيق">Agile development workflow</span></div>
+          </div>
+        </div>
+        <div class="skills-panel reveal">
+          <h3 data-en="Technologies I work with" data-ar="التقنيات التي أعمل بها">Technologies I work with</h3>
+          <div class="skills-list">
+            <div class="skill-item"><div class="skill-header"><span class="skill-name">JavaScript / TypeScript</span><span class="skill-pct">95%</span></div><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
+            <div class="skill-item"><div class="skill-header"><span class="skill-name">React / Next.js</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+            <div class="skill-item"><div class="skill-header"><span class="skill-name">Node.js / Express</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
+            <div class="skill-item"><div class="skill-header"><span class="skill-name">Python</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+            <div class="skill-item"><div class="skill-header"><span class="skill-name">MongoDB / PostgreSQL</span><span class="skill-pct">82%</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
+            <div class="skill-item"><div class="skill-header"><span class="skill-name">DevOps / CI-CD</span><span class="skill-pct">78%</span></div><div class="skill-bar"><div class="skill-fill" data-width="78"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="services section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Services" data-ar="الخدمات">Services</span>
+        <h2 class="section-title"><span data-en="What I" data-ar="ما الذي">What I</span> <span class="gradient-text" data-en="offer" data-ar="أقدمه">offer</span></h2>
+      </div>
+      <div class="services-grid">
+        <a href="service-web.html" class="service-card reveal" style="text-decoration:none;color:inherit;display:block;">
+          <div class="service-number">01</div>
+          <div class="service-icon-wrap"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <h3 data-en="Web Development" data-ar="تطوير الويب">Web Development</h3>
+          <p data-en="Custom, responsive websites built with modern frameworks. From landing pages to complex web applications." data-ar="مواقع مخصصة ومتجاوبة مبنية بأحدث الأطر البرمجية. من صفحات الهبوط إلى تطبيقات الويب المعقدة.">Custom, responsive websites built with modern frameworks. From landing pages to complex web applications.</p>
+          <div class="service-techs"><span>React</span><span>Next.js</span><span>Vue</span></div>
+        </a>
+        <a href="service-bot.html" class="service-card reveal" style="text-decoration:none;color:inherit;display:block;">
+          <div class="service-number">02</div>
+          <div class="service-icon-wrap"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <h3 data-en="Bot Development" data-ar="تطوير البوتات">Bot Development</h3>
+          <p data-en="Intelligent Discord, Telegram, and automation bots with advanced features and reliable uptime." data-ar="بوتات ذكية لديسكورد وتيlegtرام وأتمتة بميزات متقدمة ووقت تشغيل موثوق.">Intelligent Discord, Telegram, and automation bots with advanced features and reliable uptime.</p>
+          <div class="service-techs"><span>Python</span><span>Discord.py</span><span>Node</span></div>
+        </a>
+        <a href="service-app.html" class="service-card reveal" style="text-decoration:none;color:inherit;display:block;">
+          <div class="service-number">03</div>
+          <div class="service-icon-wrap"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+          <h3 data-en="App Development" data-ar="تطوير التطبيقات">App Development</h3>
+          <p data-en="Cross-platform mobile applications with native performance and beautiful UI/UX design." data-ar="تطبيقات الهاتف متعددة المنصات بأداء أصلي وتصميم جميل.">Cross-platform mobile applications with native performance and beautiful UI/UX design.</p>
+          <div class="service-techs"><span>React Native</span><span>Flutter</span><span>Expo</span></div>
+        </a>
+        <a href="service-backend.html" class="service-card reveal" style="text-decoration:none;color:inherit;display:block;">
+          <div class="service-number">04</div>
+          <div class="service-icon-wrap"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+          <h3 data-en="Backend & APIs" data-ar="الخادم وواجهات API">Backend & APIs</h3>
+          <p data-en="Scalable server architecture, REST & GraphQL APIs, database design, and cloud deployment." data-ar="هيكل خادم قابل للتوسع، واجهات REST وGraphQL، تصميم قواعد البيانات، والنشر السحابي.">Scalable server architecture, REST & GraphQL APIs, database design, and cloud deployment.</p>
+          <div class="service-techs"><span>Node</span><span>Python</span><span>AWS</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="pricing section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Pricing" data-ar="الأسعار">Pricing</span>
+        <h2 class="section-title"><span data-en="Simple," data-ar="أسعار">Simple,</span> <span class="gradient-text" data-en="transparent pricing" data-ar="شفافة">transparent pricing</span></h2>
+        <p class="section-subtitle" data-en="Choose the plan that fits your needs. All plans include my full commitment to quality." data-ar="اختر الخطة المناسبة لاحتياجاتك. جميع الخطط تشمل التزامي الكامل بالجودة.">Choose the plan that fits your needs. All plans include my full commitment to quality.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card reveal">
+          <div class="pricing-header">
+            <h3 data-en="Starter" data-ar="المبتدئ">Starter</h3>
+            <p class="pricing-desc" data-en="Perfect for small projects" data-ar="مثالي للمشاريع الصغيرة">Perfect for small projects</p>
+            <div class="pricing-price"><span class="currency">$</span><span class="amount">299</span></div>
+          </div>
+          <ul class="pricing-features">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-en="Landing Page" data-ar="صفحة هبوط">Landing Page</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-en="Responsive Design" data-ar="تصميم متجاوب">Responsive Design</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-en="Contact Form" data-ar="نموذج تواصل">Contact Form</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-en="SEO Basics" data-ar="أساسيات SEO">SEO Basics</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-en="1 Revision" data-ar="مراجعة واحدة">1 Revision</span></li>
+          </ul>
+          <a href="#contact" class="btn btn-ghost btn-full magnetic" data-en="Get Started" data-ar="ابدأ الآن">Get Started</a>
+        </div>
+        <div class="pricing-card pricing-popular reveal">
+          <div class="pricing-badge" data-en="Most Popular" data-ar="الأكثر شيوعاً">Most Popular</div>
+          <div class="pricing-header">
+            <h3 data-en="Professional" data-ar="المحترف">Professional</h3>
+            <p class="pricing-desc" data-en="For growing businesses" data-ar="للأعمال المتنامية">For growing businesses</p>
+            <div class="pricing-price"><span class="currency">$</span><span class="amount">799</span></div>
+          </div>
+          <ul class="pricing-features">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-en="Full Website (5+ pages)" data-ar="موقع كامل (5+ صفحات)">Full Website (5+ pages)</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-en="Custom Design" data-ar="تصميم مخصص">Custom Design</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-en="Backend + Database" data-ar="خادم + قاعدة بيانات">Backend + Database</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-en="API Integration" data-ar="تكامل API">API Integration</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-en="3 Revisions" data-ar="3 مراجعات">3 Revisions</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-en="1 Month Support" data-ar="شهر دعم">1 Month Support</span></li>
+          </ul>
+          <a href="#contact" class="btn btn-primary btn-full magnetic" data-en="Get Started" data-ar="ابدأ الآن">Get Started</a>
+        </div>
+        <div class="pricing-card reveal">
+          <div class="pricing-header">
+            <h3 data-en="Enterprise" data-ar="المؤسسات">Enterprise</h3>
+            <p class="pricing-desc" data-en="For complex applications" data-ar="للتطبيقات المعقدة">For complex applications</p>
+            <div class="pricing-price"><span class="currency">$</span><span class="amount">1999</span></div>
+          </div>
+          <ul class="pricing-features">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-en="Full-Stack Application" data-ar="تطبيق Full-Stack كامل">Full-Stack Application</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-en="Auth & Payments" data-ar="مصادقة ودفع">Auth & Payments</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-en="Admin Dashboard" data-ar="لوحة تحكم">Admin Dashboard</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-en="CI/CD Pipeline" data-ar="خط CI/CD">CI/CD Pipeline</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-en="Unlimited Revisions" data-ar=" مراجعات غير محدودة">Unlimited Revisions</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span data-en="3 Months Support" data-ar="3 أشهر دعم">3 Months Support</span></li>
+          </ul>
+          <a href="#contact" class="btn btn-ghost btn-full magnetic" data-en="Get Started" data-ar="ابدأ الآن">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="projects section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Projects" data-ar="المشاريع">Projects</span>
+        <h2 class="section-title"><span data-en="Featured" data-ar="مشاريع">Featured</span> <span class="gradient-text" data-en="work" data-ar="مميزة">work</span></h2>
+      </div>
+      <div class="projects-grid">
+        <article class="project-card reveal">
+          <div class="project-preview"><div class="project-preview-inner"><span class="project-emoji">&#128187;</span></div>
+            <div class="project-overlay">
+              <a href="#" class="project-link magnetic" aria-label="Live Demo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              <a href="#" class="project-link magnetic" aria-label="Source Code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>ProBot Discord</h3>
+            <p data-en="A feature-rich Discord bot with moderation, music, leveling, and custom commands for 500+ servers." data-ar="بوت ديسكورد غني بالميزات مع إشراف وموسيقى ونظام مستويات وأوامر مخصصة لأكثر من 500 سيرفر.">A feature-rich Discord bot with moderation, music, leveling, and custom commands for 500+ servers.</p>
+            <div class="project-tags"><span>Python</span><span>Discord.py</span><span>MongoDB</span></div>
+          </div>
+        </article>
+        <article class="project-card reveal">
+          <div class="project-preview"><div class="project-preview-inner"><span class="project-emoji">&#128722;</span></div>
+            <div class="project-overlay">
+              <a href="#" class="project-link magnetic" aria-label="Live Demo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              <a href="#" class="project-link magnetic" aria-label="Source Code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>ShopFlow E-Commerce</h3>
+            <p data-en="Full-stack e-commerce platform with auth, real-time inventory, Stripe payments, and admin dashboard." data-ar="منصة تجارة إلكترونية كاملة مع مصادقة وجرد لحظي ودفع Stripe ولوحة تحكم.">Full-stack e-commerce platform with auth, real-time inventory, Stripe payments, and admin dashboard.</p>
+            <div class="project-tags"><span>Next.js</span><span>Node</span><span>Stripe</span></div>
+          </div>
+        </article>
+        <article class="project-card reveal">
+          <div class="project-preview"><div class="project-preview-inner"><span class="project-emoji">&#128640;</span></div>
+            <div class="project-overlay">
+              <a href="#" class="project-link magnetic" aria-label="Live Demo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              <a href="#" class="project-link magnetic" aria-label="Source Code"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>DeployCLI</h3>
+            <p data-en="A command-line tool that automates deployment pipelines for modern web applications." data-ar="أداة سطر أوامر تؤتمت خطوط النشر لتطبيقات الويب الحديثة.">A command-line tool that automates deployment pipelines for modern web applications.</p>
+            <div class="project-tags"><span>Node.js</span><span>CLI</span><span>Docker</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="testimonials section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Testimonials" data-ar="آراء العملاء">Testimonials</span>
+        <h2 class="section-title"><span data-en="What clients" data-ar="ماذا يقول">What clients</span> <span class="gradient-text" data-en="say about me" data-ar="عملائي">say about me</span></h2>
+      </div>
+      <div class="testimonials-slider" id="testimonialsSlider">
+        <div class="testimonial-track" id="testimonialTrack">
+          <div class="testimonial-card glass">
+            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p data-en="\"Absolutely fantastic work! The bot was delivered on time and exceeded all my expectations. Highly recommended.\"" data-ar="\"عمل ممتاز بالتأكيد! تم تسليم البوت في الوقت المحدد وفوق كل توقعاتي. أنصح بشدة.\"">"Absolutely fantastic work! The bot was delivered on time and exceeded all my expectations. Highly recommended."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">A</div>
+              <div><strong>Ahmed K.</strong><br><span data-en="Discord Server Owner" data-ar="مالك سيرفر ديسكورد">Discord Server Owner</span></div>
+            </div>
+          </div>
+          <div class="testimonial-card glass">
+            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p data-en="\"Professional, responsive, and incredibly talented. My e-commerce site looks amazing and works perfectly.\"" data-ar="\"محترف ومتجاوب وموهوب بشكل لا يصدق. متجري الإلكتروني يبدو مذهلاً ويعمل بشكل مثالي.\"">"Professional, responsive, and incredibly talented. My e-commerce site looks amazing and works perfectly."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">S</div>
+              <div><strong>Sara M.</strong><br><span data-en="E-Commerce Owner" data-ar="صاحبة متجر إلكتروني">E-Commerce Owner</span></div>
+            </div>
+          </div>
+          <div class="testimonial-card glass">
+            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p data-en="\"Great communication and attention to detail. The app works flawlessly. Will definitely work together again.\"" data-ar="\"تواصل ممتاز واهتمام بالتفاصيل. التطبيق يعمل بشكل مثالي. سأعمل معه بالتأكيد مرة أخرى.\"">"Great communication and attention to detail. The app works flawlessly. Will definitely work together again."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">M</div>
+              <div><strong>Mohamed R.</strong><br><span data-en="Startup Founder" data-ar="مؤسس شركة ناشئة">Startup Founder</span></div>
+            </div>
+          </div>
+          <div class="testimonial-card glass">
+            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p data-en="\"Transformed our outdated website into a modern masterpiece. The attention to UX is remarkable.\"" data-ar="\"حوّل موقعنا القديم إلى تحفة فنية حديثة. الاهتمام بتجربة المستخدم ملحوظ.\"">"Transformed our outdated website into a modern masterpiece. The attention to UX is remarkable."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">L</div>
+              <div><strong>Layla H.</strong><br><span data-en="Marketing Director" data-ar="مديرة تسويق">Marketing Director</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-nav">
+          <button class="testimonial-btn" id="prevTestimonial" aria-label="Previous">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="testimonial-dots" id="testimonialDots"></div>
+          <button class="testimonial-btn" id="nextTestimonial" aria-label="Next">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog" class="blog section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Blog" data-ar="المدونة">Blog</span>
+        <h2 class="section-title"><span data-en="Latest" data-ar="أحدث">Latest</span> <span class="gradient-text" data-en="articles" data-ar="المقالات">articles</span></h2>
+      </div>
+      <div class="blog-grid">
+        <article class="blog-card reveal">
+          <div class="blog-image"><span>&#128187;</span></div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-date">Dec 15, 2025</span>
+              <span class="blog-category">JavaScript</span>
+            </div>
+            <h3 data-en="Building Scalable APIs with Node.js" data-ar="بناء واجهات API قابلة للتوسع مع Node.js">Building Scalable APIs with Node.js</h3>
+            <p data-en="Learn how to design and implement RESTful APIs that can handle millions of requests." data-ar="تعلم كيفية تصميم وتنفيذ واجهات RESTful يمكنها التعامل مع ملايين الطلبات.">Learn how to design and implement RESTful APIs that can handle millions of requests.</p>
+            <a href="blog-api.html" class="blog-read-more" data-en="Read More" data-ar="اقرأ المزيد">Read More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
+        <article class="blog-card reveal">
+          <div class="blog-image"><span>&#129302;</span></div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-date">Nov 28, 2025</span>
+              <span class="blog-category">Discord</span>
+            </div>
+            <h3 data-en="Discord Bot Development Guide 2025" data-ar="دليل تطوير بوت ديسكورد 2025">Discord Bot Development Guide 2025</h3>
+            <p data-en="A complete guide to building feature-rich Discord bots with Python and discord.js." data-ar="دليل شامل لبناء بوتات ديسكورد غنية بالميزات باستخدام Python وdiscord.js.">A complete guide to building feature-rich Discord bots with Python and discord.js.</p>
+            <a href="blog-discord.html" class="blog-read-more" data-en="Read More" data-ar="اقرأ المزيد">Read More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
+        <article class="blog-card reveal">
+          <div class="blog-image"><span>&#9889;</span></div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-date">Oct 10, 2025</span>
+              <span class="blog-category">Performance</span>
+            </div>
+            <h3 data-en="10 Tips to Speed Up Your Website" data-ar="10 نصائح لتسريع موقعك">10 Tips to Speed Up Your Website</h3>
+            <p data-en="Practical techniques to dramatically improve your website's loading speed and performance." data-ar="تقنيات عملية لتحسين سرعة أداء موقعك بشكل ملحوظ.">Practical techniques to dramatically improve your website's loading speed and performance.</p>
+            <a href="blog-speed.html" class="blog-read-more" data-en="Read More" data-ar="اقرأ المزيد">Read More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="FAQ" data-ar="الأسئلة الشائعة">FAQ</span>
+        <h2 class="section-title"><span data-en="Frequently" data-ar="الأسئلة">Frequently</span> <span class="gradient-text" data-en="asked questions" data-ar="المتكررة">asked questions</span></h2>
+      </div>
+      <div class="faq-list" id="faqList">
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            <span data-en="What technologies do you use?" data-ar="ما التقنيات التي تستخدمها؟">What technologies do you use?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p data-en="I primarily work with JavaScript/TypeScript, React, Next.js, Node.js, Python, and various databases like MongoDB and PostgreSQL. I choose the best stack for each project's specific needs." data-ar="أعمل أساساً مع JavaScript/TypeScript وReact وNext.js وNode.js وPython وقواعد بيانات مختلفة مثل MongoDB وPostgreSQL. أختار أفضل حزمة لكل مشروع حسب احتياجه.">I primarily work with JavaScript/TypeScript, React, Next.js, Node.js, Python, and various databases like MongoDB and PostgreSQL. I choose the best stack for each project's specific needs.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            <span data-en="How long does a typical project take?" data-ar="كم يستغرق المشروع عادةً؟">How long does a typical project take?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p data-en="It depends on the project scope. A landing page takes 1-2 weeks, a full website 3-6 weeks, and complex applications 2-4 months. I'll provide a detailed timeline after our initial consultation." data-ar="يعتمد على نطاق المشروع. صفحة الهبوط تستغرق 1-2 أسبوع، والموقع الكامل 3-6 أسابيع، والتطبيقات المعقدة 2-4 أشهر. سأقدم جدول تفصيلي بعد الاستشارة الأولية.">It depends on the project scope. A landing page takes 1-2 weeks, a full website 3-6 weeks, and complex applications 2-4 months. I'll provide a detailed timeline after our initial consultation.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            <span data-en="Do you provide ongoing support?" data-ar="هل تقدم دعم مستمر؟">Do you provide ongoing support?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p data-en="Yes! All plans include a support period. I also offer monthly maintenance packages for ongoing updates, security patches, and feature additions." data-ar="نعم! جميع الخطط تشمل فترة دعم. وأقدم أيضاً باقات صيانة شهرية للتحديثات المستمرة وتصحيحات الأمان وإضافة الميزات.">Yes! All plans include a support period. I also offer monthly maintenance packages for ongoing updates, security patches, and feature additions.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            <span data-en="What is your payment process?" data-ar="ما هي عملية الدفع؟">What is your payment process?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p data-en="I typically split payments into 3 milestones: 30% upfront, 40% at midpoint, and 30% upon completion. For larger projects, we can arrange a custom payment schedule." data-ar="عادةً أقسم المدفوعات إلى 3 مراحل: 30% مقدماً، 40% في المنتصف، و30% عند الانتهاء. للمشاريع الكبيرة يمكننا ترتيب جدول دفع مخصص.">I typically split payments into 3 milestones: 30% upfront, 40% at midpoint, and 30% upon completion. For larger projects, we can arrange a custom payment schedule.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            <span data-en="Can you work with my existing team?" data-ar="هل يمكنك العمل مع فريقي الحالي؟">Can you work with my existing team?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p data-en="Absolutely! I'm experienced in collaborating with designers, developers, and project managers. I use tools like GitHub, Jira, and Slack for seamless team integration." data-ar="بالتأكيد! لدي خبرة في التعاون مع المصممين والمطورين ومديري المشاريع. أستخدم أدوات مثل GitHub وJira和Slack لتكامل الفريق السلس.">Absolutely! I'm experienced in collaborating with designers, developers, and project managers. I use tools like GitHub, Jira, and Slack for seamless team integration.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCORD STATUS -->
+  <section id="discord" class="discord section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Discord" data-ar="ديسكورد">Discord</span>
+        <h2 class="section-title"><span data-en="My" data-ar="حالة">My</span> <span class="gradient-text" data-en="Discord Status" data-ar="ديسكورد">Discord Status</span></h2>
+      </div>
+      <div class="discord-widget glass reveal" id="discordWidget">
+        <div class="discord-status-card">
+          <div class="discord-avatar">
+            <div class="discord-avatar-img" id="discordAvatar">
+              <span>&#128100;</span>
+            </div>
+            <span class="discord-status-indicator" id="discordIndicator"></span>
+          </div>
+          <div class="discord-info">
+            <h3 id="discordUsername">Your Name#0000</h3>
+            <p class="discord-activity" id="discordActivity" data-en="Playing a game" data-ar="يلعب لعبة">Playing a game</p>
+            <div class="discord-details">
+              <div class="discord-detail">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span id="discordSince">Active now</span>
+              </div>
+            </div>
+          </div>
+          <a href="https://discord.com/users/YOUR_ID" target="_blank" class="btn btn-primary discord-add magnetic">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+            <span data-en="Add Friend" data-ar="أضف صديق">Add Friend</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-en="Contact" data-ar="تواصل">Contact</span>
+        <h2 class="section-title"><span data-en="Let's work" data-ar="لنعمل">Let's work</span> <span class="gradient-text" data-en="together" data-ar="معاً">together</span></h2>
+        <p class="section-subtitle" data-en="Have a project in mind? Sign in with Google to send me a message directly." data-ar="هل لديك مشروع في ذهنك؟ سجّل الدخول بحساب Google لإرسال رسالة مباشرة.">Have a project in mind? Sign in with Google to send me a message directly.</p>
+      </div>
+      <div class="contact-grid">
+
+        <!-- Auth & Form Column -->
+        <div class="contact-form reveal" id="contactFormWrap">
+
+          <!-- Google Sign-In (shown when NOT logged in) -->
+          <div id="googleLoginBox" class="auth-login-box">
+            <div class="auth-login-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+            </div>
+            <h3 data-en="Sign in to contact me" data-ar="سجّل الدخول للتواصل معي">Sign in to contact me</h3>
+            <p data-en="You need to sign in with your Google account before sending a message." data-ar="تحتاج إلى تسجيل الدخول بحساب Google قبل إرسال رسالة.">You need to sign in with your Google account before sending a message.</p>
+            <div id="googleSignInBtn"></div>
+          </div>
+
+          <!-- Profile + Form (shown when logged in) -->
+          <div id="googleUserBox" class="auth-user-box" style="display:none;">
+
+            <!-- User Profile Card -->
+            <div class="auth-profile">
+              <img id="authUserPic" src="" alt="Profile" class="auth-avatar">
+              <div class="auth-info">
+                <strong id="authUserName"></strong>
+                <span id="authUserEmail"></span>
+              </div>
+              <button id="authLogoutBtn" class="auth-logout" data-en="Logout" data-ar="خروج">Logout</button>
+            </div>
+
+            <!-- Contact Form -->
+            <form id="contactForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name" data-en="Name" data-ar="الاسم">Name</label>
+                  <input type="text" id="name" readonly>
+                </div>
+                <div class="form-group">
+                  <label for="email" data-en="Email" data-ar="البريد">Email</label>
+                  <input type="email" id="email" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="subject" data-en="Subject" data-ar="الموضوع">Subject</label>
+                <input type="text" id="subject" placeholder="Project Inquiry" required>
+              </div>
+              <div class="form-group">
+                <label for="message" data-en="Message" data-ar="الرسالة">Message</label>
+                <textarea id="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full magnetic">
+                <span data-en="Send Message" data-ar="إرسال">Send Message</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Info Column -->
+        <div class="contact-info reveal">
+          <div class="info-card glass">
+            <h3 data-en="Get in touch" data-ar="تواصل معي">Get in touch</h3>
+            <p data-en="Feel free to reach out through any of these channels. I'm always open to discussing new projects and ideas." data-ar="لا تتردد في التواصل عبر أي من هذه القنوات. أنا دائماً مفتوح لمناقشة مشاريع وأفكار جديدة.">Feel free to reach out through any of these channels. I'm always open to discussing new projects and ideas.</p>
+            <div class="info-items">
+              <div class="info-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>your@email.com</span></div>
+              <div class="info-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-en="Remote / Worldwide" data-ar="عن بُعد / حول العالم">Remote / Worldwide</span></div>
+            </div>
+            <div class="social-links">
+              <a href="#" class="social-link magnetic" aria-label="GitHub"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+              <a href="#" class="social-link magnetic" aria-label="Discord"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a>
+              <a href="#" class="social-link magnetic" aria-label="Twitter"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+              <a href="#" class="social-link magnetic" aria-label="LinkedIn"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="#home" class="logo"><span class="logo-bracket">D</span>evSpace</a>
+          <p data-en="Building digital experiences with passion and precision." data-ar="بناء تجارب رقمية بشغف ودقة.">Building digital experiences with passion and precision.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#home" data-en="Home" data-ar="الرئيسية">Home</a>
+          <a href="#about" data-en="About" data-ar="عني">About</a>
+          <a href="#services" data-en="Services" data-ar="الخدمات">Services</a>
+          <a href="#projects" data-en="Projects" data-ar="المشاريع">Projects</a>
+          <a href="#contact" data-en="Contact" data-ar="تواصل">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p data-en="© 2026 Your Name. Crafted with care." data-ar="© 2026 اسمك. صُنع بعناية.">© 2026 Your Name. Crafted with care.</p>
+        <a href="#home" class="back-to-top magnetic" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backend &amp; APIs | DevSpace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar scrolled">
+    <a href="index.html" class="logo"><span class="logo-bracket">D</span>evSpace</a>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+        <span class="lang-en">AR</span>
+        <span class="lang-ar">EN</span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="article-hero">
+    <div class="container">
+      <a href="index.html#services" class="article-back" data-en="Back to Services" data-ar="العودة للخدمات">&larr; Back to Services</a>
+      <div class="article-hero-icon">&#x1F5C4;</div>
+      <h1 class="article-hero-title" data-en="Backend &amp; APIs" data-ar="الخادم وواجهات البرمجة">Backend &amp; APIs</h1>
+      <p class="article-hero-desc" data-en="Scalable server architecture, REST &amp; GraphQL APIs, database design, and cloud deployment." data-ar="بنية خادم قابلة للتطوير، واجهات برمجة REST وGraphQL، تصميم قواعد البيانات، والنشر السحابي.">Scalable server architecture, REST &amp; GraphQL APIs, database design, and cloud deployment.</p>
+      <div class="service-techs-hero">
+        <span class="tech-tag">Node.js</span>
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">AWS</span>
+        <span class="tech-tag">PostgreSQL</span>
+        <span class="tech-tag">Redis</span>
+        <span class="tech-tag">Docker</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-body">
+    <div class="container">
+      <article class="article-content">
+
+        <p data-en="Backend development is the engine that powers every web application. It handles data processing, authentication, business logic, and communication between clients and servers. A well-built backend ensures reliability, security, and performance at scale." data-ar="تطوير الخادم هو المحرك الذي يدعم كل تطبيق ويب. يتعامل مع معالجة البيانات والمصادقة والمنطق التجاري والتواصل بين العملاء والخوادم. الخادم المبني جيدًا يضمن الموثوقية والأمان والأداء على نطاق واسع.">Backend development is the engine that powers every web application. It handles data processing, authentication, business logic, and communication between clients and servers. A well-built backend ensures reliability, security, and performance at scale.</p>
+
+        <h2 data-en="How Backend Development Works" data-ar="كيف يعمل تطوير الخادم">How Backend Development Works</h2>
+
+        <p data-en="Building a backend involves designing server architecture, creating APIs, managing databases, securing endpoints, and deploying to the cloud. Let me walk you through each step." data-ar="يشمل بناء الخادم تصميم بنية الخادم، وإنشاء واجهات البرمجة، وإدارة قواعد البيانات، وتأمين النقاط النهائية، والنشر السحابي. دعني أخذك عبر كل خطوة.">Building a backend involves designing server architecture, creating APIs, managing databases, securing endpoints, and deploying to the cloud. Let me walk you through each step.</p>
+
+        <h2 data-en="Step 1: Architecture Design" data-ar="الخطوة الأولى: تصميم البنية">Step 1: Architecture Design</h2>
+
+        <p data-en="A solid project structure is the foundation. Here is a typical Node.js backend layout:" data-ar="البنية السليمة هي الأساس. إليك تخطيط نموذجي لخادم Node.js:">A solid project structure is the foundation. Here is a typical Node.js backend layout:</p>
+
+        <div class="code-block">
+<pre><code>src/
+├── config/
+│   ├── database.js
+│   └── env.js
+├── controllers/
+│   ├── userController.js
+│   └── authController.js
+├── middleware/
+│   ├── auth.js
+│   ├── validate.js
+│   └── errorHandler.js
+├── models/
+│   ├── User.js
+│   └── Post.js
+├── routes/
+│   ├── userRoutes.js
+│   └── authRoutes.js
+├── services/
+│   ├── emailService.js
+│   └── cacheService.js
+├── utils/
+│   └── helpers.js
+└── app.js</code></pre>
+        </div>
+
+        <h2 data-en="Step 2: REST API Development" data-ar="الخطوة الثانية: تطوير واجهة برمجة REST">Step 2: REST API Development</h2>
+
+        <p data-en="REST APIs follow predictable URL patterns and HTTP methods. Here is an Express.js example with full CRUD operations:" data-ar="تتبع واجهات برمجة REST أنماط عنوان URL المتوقعة وطرق HTTP. إليك مثال Express.js مع عمليات CRUD كاملة:">REST APIs follow predictable URL patterns and HTTP methods. Here is an Express.js example with full CRUD operations:</p>
+
+        <div class="code-block">
+<pre><code>const express = require('express');
+const router = express.Router();
+const auth = require('../middleware/auth');
+
+// Get all posts
+router.get('/posts', async (req, res) =&gt; {
+  const posts = await Post.find()
+    .populate('author')
+    .sort({ createdAt: -1 });
+  res.json({ data: posts, count: posts.length });
+});
+
+// Get single post
+router.get('/posts/:id', async (req, res) =&gt; {
+  const post = await Post.findById(req.params.id);
+  if (!post) return res.status(404).json({ error: 'Not found' });
+  res.json({ data: post });
+});
+
+// Create post
+router.post('/posts', auth, async (req, res) =&gt; {
+  const post = await Post.create({ ...req.body, author: req.user.id });
+  res.status(201).json({ data: post });
+});
+
+// Update post
+router.put('/posts/:id', auth, async (req, res) =&gt; {
+  const post = await Post.findByIdAndUpdate(req.params.id, req.body, {
+    new: true, runValidators: true
+  });
+  res.json({ data: post });
+});
+
+// Delete post
+router.delete('/posts/:id', auth, async (req, res) =&gt; {
+  await Post.findByIdAndDelete(req.params.id);
+  res.json({ message: 'Deleted successfully' });
+});
+
+module.exports = router;</code></pre>
+        </div>
+
+        <h2 data-en="Step 3: GraphQL API" data-ar="الخطوة الثالثة: واجهة برمجة GraphQL">Step 3: GraphQL API</h2>
+
+        <p data-en="GraphQL lets clients request exactly the data they need. Here is an Apollo Server schema example:" data-ar="تتيح GraphQL للعملاء طلب البيانات التي يحتاجونها بدقة. إليك مثال على مخطط Apollo Server:">GraphQL lets clients request exactly the data they need. Here is an Apollo Server schema example:</p>
+
+        <div class="code-block">
+<pre><code>const { ApolloServer, gql } = require('apollo-server');
+
+const typeDefs = gql`
+  type User {
+    id: ID!
+    name: String!
+    email: String!
+    posts: [Post!]
+  }
+  type Post {
+    id: ID!
+    title: String!
+    content: String!
+    author: User!
+    createdAt: String!
+  }
+  type Query {
+    users: [User!]!
+    posts: [Post!]!
+    post(id: ID!): Post
+  }
+  type Mutation {
+    createPost(title: String!, content: String!): Post!
+    deletePost(id: ID!): Boolean!
+  }
+`;
+
+const resolvers = {
+  Query: {
+    posts: async () =&gt; await Post.find(),
+    post: async (_, { id }) =&gt; await Post.findById(id),
+  },
+  Mutation: {
+    createPost: async (_, args, ctx) =&gt; {
+      return await Post.create({ ...args, author: ctx.user.id });
+    },
+  },
+};
+
+const server = new ApolloServer({ typeDefs, resolvers });
+server.listen().then(({ url }) =&gt; console.log('API ready at ' + url));</code></pre>
+        </div>
+
+        <h2 data-en="Step 4: Database Design" data-ar="الخطوة الرابعة: تصميم قاعدة البيانات">Step 4: Database Design</h2>
+
+        <p data-en="A well-structured database is critical. Here is a PostgreSQL schema with relationships:" data-ar="قاعدة البيانات المُهيكلة جيدًا حيوية. إليك مخطط PostgreSQL مع العلاقات:">A well-structured database is critical. Here is a PostgreSQL schema with relationships:</p>
+
+        <div class="code-block">
+<pre><code>CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  avatar_url TEXT,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE posts (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  content TEXT NOT NULL,
+  slug VARCHAR(255) UNIQUE NOT NULL,
+  author_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  published BOOLEAN DEFAULT false,
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE comments (
+  id SERIAL PRIMARY KEY,
+  body TEXT NOT NULL,
+  post_id INTEGER REFERENCES posts(id) ON DELETE CASCADE,
+  author_id INTEGER REFERENCES users(id),
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE INDEX idx_posts_slug ON posts(slug);
+CREATE INDEX idx_posts_author ON posts(author_id);
+CREATE INDEX idx_comments_post ON comments(post_id);</code></pre>
+        </div>
+
+        <h2 data-en="Step 5: Authentication &amp; Security" data-ar="الخطوة الخامسة: المصادقة والأمان">Step 5: Authentication &amp; Security</h2>
+
+        <p data-en="JWT-based authentication is the industry standard. Here is a secure auth middleware:" data-ar="المصادقة المبنية على JWT هي المعيار الصناعي. إليك وسطاء مصادقة آمن:">JWT-based authentication is the industry standard. Here is a secure auth middleware:</p>
+
+        <div class="code-block">
+<pre><code>const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+
+// Generate token
+function generateToken(user) {
+  return jwt.sign(
+    { id: user.id, email: user.email },
+    process.env.JWT_SECRET,
+    { expiresIn: '7d' }
+  );
+}
+
+// Auth middleware
+function auth(req, res, next) {
+  const header = req.headers.authorization;
+  if (!header || !header.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'Access denied' });
+  }
+  try {
+    const token = header.split(' ')[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (err) {
+    res.status(401).json({ error: 'Invalid token' });
+  }
+}
+
+// Register with hashed password
+async function register(req, res) {
+  const { name, email, password } = req.body;
+  const hash = await bcrypt.hash(password, 12);
+  const user = await User.create({ name, email, password: hash });
+  const token = generateToken(user);
+  res.status(201).json({ user, token });
+}
+
+module.exports = { generateToken, auth, register };</code></pre>
+        </div>
+
+        <h2 data-en="Step 6: Cloud Deployment" data-ar="الخطوة السادسة: النشر السحابي">Step 6: Cloud Deployment</h2>
+
+        <p data-en="Docker ensures consistency across environments. Here are the deployment files:" data-ar="يضمن Docker الاتساق عبر بيئات مختلفة. إليك ملفات النشر:">Docker ensures consistency across environments. Here are the deployment files:</p>
+
+        <div class="code-block">
+<pre><code># Dockerfile
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+RUN npm run build
+
+FROM node:20-alpine
+WORKDIR /app
+RUN addgroup -g 1001 appgroup &amp;&amp; adduser -u 1001 -G appgroup -s /bin/sh -D appuser
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+COPY package*.json ./
+USER appuser
+EXPOSE 3000
+CMD ["node", "dist/app.js"]</code></pre>
+        </div>
+
+        <div class="code-block">
+<pre><code># docker-compose.yml
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://user:pass@db:5432/myapp
+      - REDIS_URL=redis://cache:6379
+    depends_on:
+      - db
+      - cache
+    restart: unless-stopped
+
+  db:
+    image: postgres:16-alpine
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: myapp
+
+  cache:
+    image: redis:7-alpine
+    volumes:
+      - redisdata:/data
+
+volumes:
+  pgdata:
+  redisdata:</code></pre>
+        </div>
+
+        <blockquote data-en="A great backend is invisible. Users never think about it, but they notice when it is not there." data-ar="الخادم العظيم غير مرئي. المستخدمون لا يفكرون أبدًا فيه، لكنهم يلاحظون عندما لا يكون موجودًا.">A great backend is invisible. Users never think about it, but they notice when it is not there.</blockquote>
+
+        <h2 data-en="What You Get" data-ar="ما تحصل عليه">What You Get</h2>
+
+        <ul class="article-list">
+          <li data-en="RESTful &amp; GraphQL API Architecture" data-ar="بنية واجهات برمجة RESTful وGraphQL">RESTful &amp; GraphQL API Architecture</li>
+          <li data-en="JWT Authentication &amp; Role-based Access" data-ar="مصادقة JWT وصلاحيات مبنية على الأدوار">JWT Authentication &amp; Role-based Access</li>
+          <li data-en="PostgreSQL / MongoDB Database Design" data-ar="تصميم قاعدة بيانات PostgreSQL / MongoDB">PostgreSQL / MongoDB Database Design</li>
+          <li data-en="Redis Caching &amp; Session Management" data-ar="تخزين مؤقت Redis وإدارة الجلسات">Redis Caching &amp; Session Management</li>
+          <li data-en="Docker &amp; Docker Compose Setup" data-ar="إعداد Docker وDocker Compose">Docker &amp; Docker Compose Setup</li>
+          <li data-en="CI/CD Pipeline Configuration" data-ar="تكوين خط أنابيب CI/CD">CI/CD Pipeline Configuration</li>
+          <li data-en="Monitoring, Logging &amp; Health Checks" data-ar="المراقبة والتدقيق والفحوصات الصحية">Monitoring, Logging &amp; Health Checks</li>
+          <li data-en="30 Days Post-launch Support" data-ar="30 يومًا من الدعم بعد الإطلاق">30 Days Post-launch Support</li>
+        </ul>
+
+        <div class="article-tags">
+          <span class="article-tag">Node.js</span>
+          <span class="article-tag">Python</span>
+          <span class="article-tag">AWS</span>
+          <span class="article-tag">PostgreSQL</span>
+          <span class="article-tag">Redis</span>
+          <span class="article-tag">Docker</span>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <section class="article-cta">
+    <div class="container">
+      <h2 data-en="Ready to build something powerful?" data-ar="مستعد لبناء شيء قوي؟">Ready to build something powerful?</h2>
+      <p data-en="Let's discuss your backend architecture needs." data-ar="دعنا نناقش احتياجات بنية الخادم الخاصة بك.">Let's discuss your backend architecture needs.</p>
+      <a href="index.html#contact" class="btn btn-primary" data-en="Get In Touch" data-ar="تواصل معي">Get In Touch</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 DevSpace. Crafted with care.</p>
+        <a href="index.html#home" class="back-to-top magnetic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    themeToggle.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('portfolio-theme', next);
+    });
+    const langToggle = document.getElementById('langToggle');
+    let currentLang = localStorage.getItem('portfolio-lang') || 'en';
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      localStorage.setItem('portfolio-lang', lang);
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const text = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+        if (text) el.textContent = text;
+      });
+    }
+    if (currentLang === 'ar') setLanguage('ar');
+    langToggle.addEventListener('click', () => setLanguage(currentLang === 'en' ? 'ar' : 'en'));
+  </script>
+
+</body>
+</html>

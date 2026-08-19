@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10 Tips to Speed Up Your Website | Blog</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar scrolled" id="navbar">
+    <a href="index.html" class="logo"><span class="logo-bracket">D</span>evSpace</a>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+        <span class="lang-en">AR</span>
+        <span class="lang-ar">EN</span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="article-hero">
+    <div class="container">
+      <a href="index.html#blog" class="article-back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        <span data-en="Back to Blog" data-ar="العودة للمدونة">Back to Blog</span>
+      </a>
+      <div class="article-meta">
+        <span class="blog-date">Oct 10, 2025</span>
+        <span class="blog-category">Performance</span>
+      </div>
+      <h1 data-en="10 Tips to Speed Up Your Website" data-ar="10 نصائح لتسريع موقعك">10 Tips to Speed Up Your Website</h1>
+      <p class="lead" data-en="Practical techniques to dramatically improve your website's loading speed and overall performance." data-ar="تقنيات عملية لتحسين سرعة أداء موقعك بشكل ملحوظ.">Practical techniques to dramatically improve your website's loading speed and overall performance.</p>
+    </div>
+  </section>
+
+  <section class="article-body">
+    <div class="container">
+      <div class="article-content">
+
+        <p data-en="Website speed directly impacts user experience, SEO rankings, and conversion rates. Here are 10 proven techniques to make your website blazing fast." data-ar="سرعة الموقع تؤثر مباشرة على تجربة المستخدم ومتصنيفات SEO ومعدلات التحويل. إليك 10 تقنيات مثبتة لجعل موقعك سريع بشكل مذهل.">Website speed directly impacts user experience, SEO rankings, and conversion rates. Here are 10 proven techniques to make your website blazing fast.</p>
+
+        <h2 data-en="1. Optimize Images" data-ar="1. حسّن الصور">1. Optimize Images</h2>
+        <p data-en="Images account for most of a webpage's weight. Use modern formats like WebP and AVIF, and always compress:" data-an="الصور تشكل معظم وزن صفحة الويب. استخدم صيغ حديثة مثل WebP وAVIF، و دائماً اضغطها:">Images account for most of a webpage's weight. Use modern formats like WebP and AVIF, and always compress:</p>
+
+        <pre><code>&lt;picture&gt;
+  &lt;source srcset="image.avif" type="image/avif"&gt;
+  &lt;source srcset="image.webp" type="image/webp"&gt;
+  &lt;img src="image.jpg" alt="Description" loading="lazy"&gt;
+&lt;/picture&gt;</code></pre>
+
+        <h2 data-en="2. Minify CSS and JavaScript" data-ar="2. صغر ملفات CSS وJavaScript">2. Minify CSS and JavaScript</h2>
+        <p data-en="Remove whitespace and comments from your code to reduce file sizes:" data-ar="أزل المسافات الفارغة والتعليقات من الكود لتقليل أحجام الملفات:">Remove whitespace and comments from your code to reduce file sizes:</p>
+
+        <pre><code># Using Terser for JS
+npx terser input.js -o output.min.js --compress --mangle
+
+# Using cssnano for CSS
+npx cssnano input.css output.min.css</code></pre>
+
+        <h2 data-en="3. Enable Compression" data-ar="3. فعّل الضغط">3. Enable Compression</h2>
+        <p data-en="Enable Gzip or Brotli compression on your server to reduce transfer size by up to 70%:" data-ar="فعّل ضغط Gzip أو Brotli على خادمك لتقليل حجم النقل بنسبة تصل إلى 70%:">Enable Gzip or Brotli compression on your server to reduce transfer size by up to 70%:</p>
+
+        <pre><code># Nginx configuration
+gzip on;
+gzip_types text/plain text/css application/json application/javascript;
+gzip_min_length 256;
+
+# Or use Brotli for better compression
+brotli on;
+brotli_types text/plain text/css application/json application/javascript;</code></pre>
+
+        <h2 data-en="4. Implement Lazy Loading" data-ar="4. نفذ التحميل الكسول">4. Implement Lazy Loading</h2>
+        <p data-en="Don't load images and iframes until they're needed:" data-ar="لا تحمل الصور والإطارات حتى تكون مطلوبة:">Don't load images and iframes until they're needed:</p>
+
+        <pre><code>// Lazy load images with Intersection Observer
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.src = entry.target.dataset.src;
+      observer.unobserve(entry.target);
+    }
+  });
+});
+
+document.querySelectorAll('img[data-src]').forEach(img => {
+  observer.observe(img);
+});</code></pre>
+
+        <h2 data-en="5. Use a CDN" data-ar="5. استخدم CDN">5. Use a CDN</h2>
+        <p data-en="Content Delivery Networks serve your assets from servers closest to your users:" data-ar="شبكات توصيل المحتوى تقدم أصولك من خوادم أقرب إلى المستخدمين:">Content Delivery Networks serve your assets from servers closest to your users:</p>
+
+        <blockquote data-en="Popular CDNs include Cloudflare (free tier), AWS CloudFront, and Fastly. A CDN alone can improve load times by 50% or more." data-ar="يشمل CDNs الشائعة Cloudflare (مجاني)، وAWS CloudFront، وFastly. CDN وحده يمكنه تحسين أوقات التحميل بنسبة 50% أو أكثر.">Popular CDNs include Cloudflare (free tier), AWS CloudFront, and Fastly. A CDN alone can improve load times by 50% or more.</blockquote>
+
+        <h2 data-en="6. Reduce HTTP Requests" data-ar="6. قلل طلبات HTTP">6. Reduce HTTP Requests</h2>
+        <p data-en="Each HTTP request adds latency. Combine files, use CSS sprites, and inline critical CSS:" data-ar="كل طلب HTTP يضيف تأخيراً. ادمج الملفات واستخدم CSS sprites وادمج CSS الحرج:">Each HTTP request adds latency. Combine files, use CSS sprites, and inline critical CSS:</p>
+
+        <pre><code>&lt;!-- Inline critical CSS --&gt;
+&lt;style&gt;
+  .hero { display: flex; align-items: center; }
+  .header { position: fixed; top: 0; }
+&lt;/style&gt;
+
+&lt;!-- Defer non-critical CSS --&gt;
+&lt;link rel="preload" href="styles.css" as="style" onload="this.rel='stylesheet'"&gt;</code></pre>
+
+        <h2 data-en="7. Optimize Web Fonts" data-ar="7. حسّن خطوط الويب">7. Optimize Web Fonts</h2>
+        <p data-en="Fonts can block rendering. Use font-display: swap and preload:" data-ar="الخطوط يمكنها حظر العرض. استخدم font-display: swap وأعد التحميل:">Fonts can block rendering. Use font-display: swap and preload:</p>
+
+        <pre><code>@font-face {
+  font-family: 'MyFont';
+  src: url('font.woff2') format('woff2');
+  font-display: swap;
+  unicode-range: U+0000-00FF; /* Only load needed characters */
+}</code></pre>
+
+        <h2 data-en="8. Database Query Optimization" data-ar="8. تحسين استعلامات قاعدة البيانات">8. Database Query Optimization</h2>
+        <p data-en="Slow database queries are often the biggest bottleneck. Add indexes and paginate:" data-ar="الاستعلامات البطيئة هي غالباً أكبر عائق. أضف فهارس واستخدم التصفح:">Slow database queries are often the biggest bottleneck. Add indexes and paginate:</p>
+
+        <pre><code>// Add indexes for frequently queried fields
+db.collection('users').createIndex({ email: 1 }, { unique: true });
+
+// Paginate results
+const page = parseInt(req.query.page) || 1;
+const limit = 10;
+const skip = (page - 1) * limit;
+const users = await User.find().skip(skip).limit(limit);</code></pre>
+
+        <h2 data-en="9. Implement Browser Caching" data-ar="9. نفذ التخزين المؤقت في المتصفح">9. Implement Browser Caching</h2>
+        <p data-en="Set proper cache headers so returning visitors don't re-download everything:" data-ar="عيّن رؤوس تخزين مؤقت مناسبة حتى لا يعيد الزائرون تحميل كل شيء:">Set proper cache headers so returning visitors don't re-download everything:</p>
+
+        <pre><code># Set cache headers
+Cache-Control: public, max-age=31536000, immutable  # For static assets
+Cache-Control: no-cache  # For HTML pages
+ETag: "abc123"  # For conditional requests</code></pre>
+
+        <h2 data-en="10. Measure and Monitor" data-ar="10. قسّ وراقب">10. Measure and Monitor</h2>
+        <p data-en="You can't improve what you don't measure. Use these tools:" data-ar="لا يمكنك تحسين ما لا تقيسه. استخدم هذه الأدوات:">You can't improve what you don't measure. Use these tools:</p>
+        <ul>
+          <li><strong>Google Lighthouse</strong> - <span data-en="Comprehensive performance audit" data-ar="تدقيق أداء شامل">Comprehensive performance audit</span></li>
+          <li><strong>WebPageTest</strong> - <span data-en="Real-world performance testing" data-ar="اختبار أداء واقعي">Real-world performance testing</span></li>
+          <li><strong>Core Web Vitals</strong> - <span data-en="Google's user experience metrics" data-ar="مقياس تجربة المستخدم من Google">Google's user experience metrics</span></li>
+          <li><strong>Chrome DevTools</strong> - <span data-en="Network and performance profiling" data-ar="تحليل الشبكة والأداء">Network and performance profiling</span></li>
+        </ul>
+
+        <h2 data-en="Conclusion" data-ar="الخاتمة">Conclusion</h2>
+        <p data-en="Website performance is an ongoing process, not a one-time fix. Start with the biggest impact items (images, compression, CDN) and gradually optimize the rest. Your users — and search engines — will thank you." data-ar="أداء الموقع عملية مستمرة وليست إصلاحاً لمرة واحدة. ابدأ بالعناصر الأكبر تأثيراً (الصور، الضغط، CDN) وحسّن الباقي تدريجياً. المستخدمون — ومحركات البحث — سيمتنون لك.">Website performance is an ongoing process, not a one-time fix. Start with the biggest impact items (images, compression, CDN) and gradually optimize the rest. Your users — and search engines — will thank you.</p>
+
+        <div class="article-tags">
+          <span>Performance</span><span>Web Dev</span><span>Optimization</span><span>Speed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Your Name. Crafted with care.</p>
+        <a href="index.html#home" class="back-to-top magnetic" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    themeToggle.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('portfolio-theme', next);
+    });
+    const langToggle = document.getElementById('langToggle');
+    let currentLang = localStorage.getItem('portfolio-lang') || 'en';
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      localStorage.setItem('portfolio-lang', lang);
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const text = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+        if (text) el.textContent = text;
+      });
+    }
+    if (currentLang === 'ar') setLanguage('ar');
+    langToggle.addEventListener('click', () => setLanguage(currentLang === 'en' ? 'ar' : 'en'));
+  </script>
+</body>
+</html>

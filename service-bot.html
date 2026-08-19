@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bot Development | DevSpace</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar scrolled">
+    <a href="index.html" class="logo"><span class="logo-bracket">D</span>evSpace</a>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+        <span class="lang-en">AR</span>
+        <span class="lang-ar">EN</span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="article-hero">
+    <div class="container">
+      <a href="index.html#services" class="article-back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        <span data-en="Back to Services" data-ar="العودة للخدمات">Back to Services</span>
+      </a>
+      <div class="service-hero-icon" style="font-size:4rem;margin-bottom:1rem;">&#128187;</div>
+      <h1 data-en="Bot Development" data-ar="تطوير البوتات">Bot Development</h1>
+      <p class="lead" data-en="Intelligent Discord, Telegram, and automation bots with advanced features and reliable uptime." data-ar="بوتات ذكية لديسكورد وتيlegtرام وأتمتة بميزات متقدمة ووقت تشغيل موثوق.">Intelligent Discord, Telegram, and automation bots with advanced features and reliable uptime.</p>
+      <div class="service-techs-hero">
+        <span>Python</span><span>Discord.py</span><span>Node.js</span><span>Telethon</span><span>MongoDB</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-body">
+    <div class="container">
+      <div class="article-content">
+
+        <h2 data-en="How Bot Development Works" data-ar="كيف يعمل تطوير البوتات">How Bot Development Works</h2>
+        <p data-en="Bots are automated programs that interact with users on platforms like Discord and Telegram. They can moderate servers, play music, manage tasks, and much more. Here's how I build them:" data-ar="البوتات هي برامج آلية تتفاعل مع المستخدمين على منصات مثل ديسكورد وتيlegtرام. يمكنها إشراف على السيرفرات وتشغيل الموسيقى وإدارة المهام وغير ذلك. إليك كيف أبنيها:">Bots are automated programs that interact with users on platforms like Discord and Telegram. They can moderate servers, play music, manage tasks, and much more. Here's how I build them:</p>
+
+        <h2 data-en="Step 1: Planning & Architecture" data-ar="الخطوة 1: التخطيط والهندسة المعمارية">Step 1: Planning & Architecture</h2>
+        <p data-en="I analyze your requirements and design the bot's architecture. This includes defining commands, permissions, database schema, and hosting strategy." data-ar="أحلل متطلباتك وأصمم هندسة البوت المعمارية. يشمل هذا تحديد الأوامر والصلاحيات ومخطط قاعدة البيانات واستراتيجية الاستضافة.">I analyze your requirements and design the bot's architecture. This includes defining commands, permissions, database schema, and hosting strategy.</p>
+
+        <pre><code># Bot Architecture Overview
+bot/
+  ├── cogs/              # Feature modules
+  │   ├── moderation.py  # Ban, kick, mute
+  │   ├── music.py       # Music player
+  │   ├── economy.py     # Virtual currency
+  │   └── levels.py      # XP & leveling
+  ├── utils/
+  │   ├── database.py    # DB connections
+  │   └── helpers.py     # Utility functions
+  ├── config.py          # Settings
+  └── main.py            # Bot entry point</code></pre>
+
+        <h2 data-en="Step 2: Core Development" data-ar="الخطوة 2: التطوير الأساسي">Step 2: Core Development</h2>
+        <p data-en="I build the bot's core functionality using Python (discord.py) or JavaScript (discord.js). Each feature is modular and well-organized." data-ar="أبني الوظائف الأساسية للبوت باستخدام Python (discord.py) أو JavaScript (discord.js). كل ميزة وحدوية ومنظمة.">I build the bot's core functionality using Python (discord.py) or JavaScript (discord.js). Each feature is modular and well-organized.</p>
+
+        <h3 data-en="Discord Bot with Python" data-ar="بوت ديسكورد مع Python">Discord Bot with Python</h3>
+        <pre><code>import discord
+from discord.ext import commands
+
+intents = discord.Intents.all()
+bot = commands.Bot(command_prefix='!', intents=intents)
+
+@bot.tree.command(name="ban", description="Ban a member")
+@discord.app_commands.describe(member="Member to ban", reason="Reason")
+async def ban(interaction: discord.Interaction, member: discord.Member, reason: str = "No reason"):
+    if not interaction.user.guild_permissions.ban_members:
+        await interaction.response.send_message("No permission!", ephemeral=True)
+        return
+    await member.ban(reason=reason)
+    await interaction.response.send_message(f"Banned {member.mention}: {reason}")
+
+@bot.event
+async def on_ready():
+    await bot.tree.sync()
+    print(f'{bot.user} is ready!')</code></pre>
+
+        <h3 data-en="Telegram Bot" data-ar="بوت تيليجرام">Telegram Bot</h3>
+        <pre><code>from telethon import TelegramClient, events
+
+api_id = 12345
+api_hash = 'your_api_hash'
+bot = TelegramClient('bot', api_id, api_hash).start(bot_token='your_bot_token')
+
+@bot.on(events.NewMessage(pattern='/start'))
+async def start(event):
+    await event.respond('Welcome! I am your bot.')
+
+@bot.on(events.NewMessage(pattern='/help'))
+async def help(event):
+    await event.respond('Available commands:\n/start - Start bot\n/help - Show help')
+
+bot.run_until_disconnected()</code></pre>
+
+        <h2 data-en="Step 3: Advanced Features" data-ar="الخطوة 3: الميزات المتقدمة">Step 3: Advanced Features</h2>
+        <p data-en="Beyond basic commands, I add advanced features that make your bot truly powerful:" data-ar="بالإضافة إلى الأوامر الأساسية، أضيف ميزات متقدمة تجعل بوتك قويًا حقًا:">Beyond basic commands, I add advanced features that make your bot truly powerful:</p>
+        <ul>
+          <li data-en="Moderation system (ban, kick, mute, warn)" data-ar="نظام إشراف (حظر، طرد، كتم، تحذير)">Moderation system (ban, kick, mute, warn)</li>
+          <li data-en="Music player with queue management" data-ar="مشغل موسيقى مع إدارة قائمة الانتظار">Music player with queue management</li>
+          <li data-en="Leveling & XP system" data-ar="نظام المستويات والخبرة">Leveling & XP system</li>
+          <li data-en="Economy system with virtual currency" data-ar="نظام اقتصادي مع عملة افتراضية">Economy system with virtual currency</li>
+          <li data-en="Auto-moderation & spam detection" data-ar="إشراف تلقائي واكتشاف الرسائل المزعجة">Auto-moderation & spam detection</li>
+          <li data-en="Custom commands & reactions" data-ar="أوامر مخصصة وتفاعلات">Custom commands & reactions</li>
+          <li data-en="Database integration for persistent data" data-ar="تكامل قاعدة البيانات للبيانات الدائمة">Database integration for persistent data</li>
+          <li data-en="Web dashboard for bot management" data-ar="لوحة تحكم ويب لإدارة البوت">Web dashboard for bot management</li>
+        </ul>
+
+        <h2 data-en="Step 4: Database Integration" data-ar="الخطوة 4: تكامل قاعدة البيانات">Step 4: Database Integration</h2>
+        <p data-en="For persistent data like user profiles, settings, and logs, I use MongoDB or PostgreSQL:" data-ar="للبيانات الدائمة مثل ملفات المستخدمين والإعدادات والسجلات، أستخدم MongoDB أو PostgreSQL:">For persistent data like user profiles, settings, and logs, I use MongoDB or PostgreSQL:</p>
+
+        <pre><code>import sqlite3
+
+# Create database connection
+db = sqlite3.connect('bot_database.db')
+cursor = db.cursor()
+
+# Users table
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS users (
+        user_id INTEGER PRIMARY KEY,
+        xp INTEGER DEFAULT 0,
+        level INTEGER DEFAULT 1,
+        coins INTEGER DEFAULT 0,
+        warnings INTEGER DEFAULT 0,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+''')
+
+# Settings table
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS guild_settings (
+        guild_id INTEGER PRIMARY KEY,
+        welcome_channel INTEGER,
+        log_channel INTEGER,
+        auto_role INTEGER,
+        prefix TEXT DEFAULT '!'
+    )
+''')
+db.commit()</code></pre>
+
+        <h2 data-en="Step 5: Hosting & Deployment" data-ar="الخطوة 5: الاستضافة والنشر">Step 5: Hosting & Deployment</h2>
+        <p data-en="Your bot runs 24/7 on reliable hosting. I set up monitoring, automatic restarts, and logging:" data-ar="بوتك يعمل على مدار الساعة على استضافة موثوقة. أُعد المراقبة والاعادة التشغيل التلقائية والتدقيق:">Your bot runs 24/7 on reliable hosting. I set up monitoring, automatic restarts, and logging:</p>
+
+        <pre><code># requirements.txt
+discord.py==2.3.2
+python-dotenv==1.0.0
+pymongo==4.6.1
+aiosqlite==0.19.0
+
+# Docker deployment
+FROM python:3.11-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . .
+CMD ["python", "main.py"]</code></pre>
+
+        <blockquote data-en="Every bot is built to be reliable, fast, and feature-rich. I ensure 99.9% uptime with proper error handling and automatic recovery." data-ar="كل بنوت مبني ليكون موثوقاً وسريعاً وغنياً بالميزات. أضمن وقت تشغيل 99.9% مع معالجة أخطاء مناسبة واسترداد تلقائي.">Every bot is built to be reliable, fast, and feature-rich. I ensure 99.9% uptime with proper error handling and automatic recovery.</blockquote>
+
+        <h2 data-en="What You Get" data-ar="التي تحصل عليه">What You Get</h2>
+        <ul>
+          <li data-en="Custom bot with all requested features" data-ar="بوت مخصص مع كل الميزات المطلوبة">Custom bot with all requested features</li>
+          <li data-en="Slash commands & modern UI" data-ar="أوامر سلاش وواجهة حديثة">Slash commands & modern UI</li>
+          <li data-en="24/7 hosting with 99.9% uptime" data-ar="استضافة 24/7 مع 99.9% وقت تشغيل">24/7 hosting with 99.9% uptime</li>
+          <li data-en="Database for persistent data" data-ar="قاعدة بيانات للبيانات الدائمة">Database for persistent data</li>
+          <li data-en="Web dashboard for management" data-ar="لوحة تحكم ويب للإدارة">Web dashboard for management</li>
+          <li data-en="Detailed documentation" data-ar="توثيق مفصل">Detailed documentation</li>
+          <li data-en="30 days free support" data-ar="30 يوم دعم مجاني">30 days free support</li>
+        </ul>
+
+        <div class="article-tags">
+          <span>Python</span><span>Discord.py</span><span>Node.js</span><span>Telegram</span><span>MongoDB</span><span>Docker</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg2);text-align:center;">
+    <div class="container">
+      <h2 class="section-title" style="margin-bottom:1rem;" data-en="Need a custom bot?" data-ar="تحتاج بوت مخصص؟">Need a custom bot?</h2>
+      <p style="color:var(--text-secondary);margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto;" data-en="Let me build the perfect bot for your server or community." data-ar="دعني أبني البوت المثالي لسيرفرك أو مجتمعك.">Let me build the perfect bot for your server or community.</p>
+      <a href="index.html#contact" class="btn btn-primary magnetic" style="display:inline-flex;">
+        <span data-en="Get Your Bot" data-ar="احصل على بوتك">Get Your Bot</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 DevSpace. Crafted with care.</p>
+        <a href="index.html#home" class="back-to-top magnetic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    themeToggle.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('portfolio-theme', next);
+    });
+    const langToggle = document.getElementById('langToggle');
+    let currentLang = localStorage.getItem('portfolio-lang') || 'en';
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      localStorage.setItem('portfolio-lang', lang);
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const text = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+        if (text) el.textContent = text;
+      });
+    }
+    if (currentLang === 'ar') setLanguage('ar');
+    langToggle.addEventListener('click', () => setLanguage(currentLang === 'en' ? 'ar' : 'en'));
+  </script>
+</body>
+</html>
