@@ -346,18 +346,49 @@
   // ============ CONTACT FORM ============
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
+    contactForm.addEventListener('submit', async function (e) {
       e.preventDefault();
       const btn = this.querySelector('.btn');
       const originalHTML = btn.innerHTML;
-      btn.innerHTML = `<span>${currentLang === 'ar' ? 'تم الإرسال!' : 'Message Sent!'}</span>`;
-      btn.style.background = '#22c55e';
+      const nameVal = document.getElementById('name').value;
+      const emailVal = document.getElementById('email').value;
+      const subjectVal = document.getElementById('subject').value;
+      const messageVal = document.getElementById('message').value;
+
+      btn.innerHTML = `<span>${currentLang === 'ar' ? 'جاري الإرسال...' : 'Sending...'}</span>`;
       btn.style.pointerEvents = 'none';
+
+      try {
+        const res = await fetch('/api/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: nameVal, email: emailVal, subject: subjectVal, message: messageVal })
+        });
+        const data = await res.json();
+        if (data.success) {
+          btn.innerHTML = `<span>${currentLang === 'ar' ? 'تم الإرسال!' : 'Message Sent!'}</span>`;
+          btn.style.background = '#22c55e';
+          this.reset();
+          // Restore pre-filled Google values
+          const saved = sessionStorage.getItem('googleProfile');
+          if (saved) {
+            const p = JSON.parse(saved);
+            document.getElementById('name').value = p.name;
+            document.getElementById('email').value = p.email;
+          }
+        } else {
+          btn.innerHTML = `<span>${currentLang === 'ar' ? 'خطأ!' : 'Error!'}</span>`;
+          btn.style.background = '#ef4444';
+        }
+      } catch (err) {
+        btn.innerHTML = `<span>${currentLang === 'ar' ? 'خطأ!' : 'Error!'}</span>`;
+        btn.style.background = '#ef4444';
+      }
+
       setTimeout(() => {
         btn.innerHTML = originalHTML;
         btn.style.background = '';
         btn.style.pointerEvents = '';
-        this.reset();
       }, 3000);
     });
   }
@@ -409,7 +440,7 @@
 
 // ── Google auth init (global, called by script onload) ────────
 function initGoogleAuth() {
-  const GOOGLE_CLIENT_ID = '300324984434-5m7mupm8uviahp0ds5kkt0uktm5f58b8.apps.googleusercontent.com';
+  const GOOGLE_CLIENT_ID = '300324984434-u19s3mq7c9qmg8h6khs17o0kp4ajb5om.apps.googleusercontent.com';
 
   function handleCredentialResponse(response) {
     const payload = JSON.parse(atob(response.credential.split('.')[1]));
