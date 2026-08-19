@@ -409,7 +409,7 @@
 
 // ── Google auth init (global, called by script onload) ────────
 function initGoogleAuth() {
-  const GOOGLE_CLIENT_ID = '300324984434-u19s3mq7c9qmg8h6khs17o0kp4ajb5om.apps.googleusercontent.com';
+  const GOOGLE_CLIENT_ID = '300324984434-5m7mupm8uviahp0ds5kkt0uktm5f58b8.apps.googleusercontent.com';
 
   function handleCredentialResponse(response) {
     const payload = JSON.parse(atob(response.credential.split('.')[1]));
