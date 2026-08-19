@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | DevSpace</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    .dash-nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; border-bottom: 1px solid var(--border); background: var(--card); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(12px); }
+    .dash-nav .logo { font-size: 1.2rem; font-weight: 700; text-decoration: none; }
+    .dash-nav .logo span { color: var(--accent); }
+    .dash-nav-right { display: flex; align-items: center; gap: 1rem; }
+    .dash-nav-right a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .dash-nav-right a:hover { color: var(--accent); }
+    .logout-btn { background: transparent; border: 1px solid var(--border); color: var(--text-secondary); padding: 0.5rem 1rem; border-radius: 8px; font-family: inherit; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; }
+    .logout-btn:hover { border-color: #ef4444; color: #ef4444; }
+
+    .dash-container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+    .dash-header { margin-bottom: 2rem; }
+    .dash-header h1 { font-size: 1.8rem; font-weight: 700; }
+    .dash-header p { color: var(--text-secondary); font-size: 0.95rem; margin-top: 0.3rem; }
+
+    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+    .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem 1.5rem; }
+    .stat-card .stat-num { font-size: 2rem; font-weight: 700; color: var(--accent); }
+    .stat-card .stat-label { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem; }
+
+    .messages-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .messages-header h2 { font-size: 1.2rem; font-weight: 600; }
+    .refresh-btn { background: var(--card); border: 1px solid var(--border); color: var(--text-secondary); padding: 0.5rem 1rem; border-radius: 8px; font-family: inherit; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; }
+    .refresh-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    .msg-list { display: flex; flex-direction: column; gap: 0.8rem; }
+    .msg-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.3rem 1.5rem; transition: border-color 0.2s; cursor: pointer; }
+    .msg-card:hover { border-color: var(--accent); }
+    .msg-card.unread { border-left: 3px solid var(--accent); }
+    .msg-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; }
+    .msg-card-from { display: flex; align-items: center; gap: 0.8rem; }
+    .msg-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; flex-shrink: 0; }
+    .msg-name { font-weight: 600; font-size: 0.95rem; }
+    .msg-email { font-size: 0.8rem; color: var(--text-secondary); }
+    .msg-date { font-size: 0.8rem; color: var(--text-secondary); }
+    .msg-subject { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.4rem; }
+    .msg-body { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
+    .msg-card-actions { display: flex; gap: 0.5rem; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid var(--border); }
+    .msg-action { background: transparent; border: 1px solid var(--border); color: var(--text-secondary); padding: 0.35rem 0.8rem; border-radius: 6px; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+    .msg-action:hover { border-color: var(--accent); color: var(--accent); }
+    .msg-action.delete:hover { border-color: #ef4444; color: #ef4444; }
+    .msg-action.reply { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .msg-action.reply:hover { opacity: 0.85; }
+
+    .empty-state { text-align: center; padding: 4rem 2rem; color: var(--text-secondary); }
+    .empty-state svg { margin-bottom: 1rem; opacity: 0.4; }
+    .empty-state h3 { font-size: 1.1rem; margin-bottom: 0.3rem; color: var(--text); }
+    .empty-state p { font-size: 0.9rem; }
+
+    .loading { text-align: center; padding: 3rem; color: var(--text-secondary); }
+    .loading::after { content: ''; display: inline-block; width: 20px; height: 20px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; margin-left: 0.5rem; vertical-align: middle; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 768px) {
+      .stats-row { grid-template-columns: 1fr; }
+      .dash-container { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="dash-nav">
+    <a href="index.html" class="logo"><span>D</span>evSpace</a>
+    <div class="dash-nav-right">
+      <a href="index.html#contact">View Portfolio</a>
+      <button class="logout-btn" id="logoutBtn">Logout</button>
+    </div>
+  </nav>
+
+  <div class="dash-container">
+    <div class="dash-header">
+      <h1>Contact Messages</h1>
+      <p>Messages from visitors who contacted you via your portfolio</p>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-num" id="totalCount">0</div><div class="stat-label">Total Messages</div></div>
+      <div class="stat-card"><div class="stat-num" id="unreadCount">0</div><div class="stat-label">Unread</div></div>
+      <div class="stat-card"><div class="stat-num" id="todayCount">0</div><div class="stat-label">Today</div></div>
+    </div>
+
+    <div class="messages-header">
+      <h2>Messages</h2>
+      <button class="refresh-btn" id="refreshBtn">Refresh</button>
+    </div>
+
+    <div class="msg-list" id="msgList">
+      <div class="loading">Loading messages</div>
+    </div>
+  </div>
+
+  <script>
+    async function checkAuth() {
+      const res = await fetch('/api/auth');
+      const data = await res.json();
+      if (!data.authenticated) window.location.href = '/login.html';
+      return data.authenticated;
+    }
+
+    async function loadMessages() {
+      document.getElementById('msgList').innerHTML = '<div class="loading">Loading messages</div>';
+      try {
+        const res = await fetch('/api/messages');
+        if (res.status === 401 || res.redirected) { window.location.href = '/login.html'; return; }
+        const messages = await res.json();
+        renderMessages(messages);
+      } catch (e) {
+        document.getElementById('msgList').innerHTML = '<div class="empty-state"><h3>Error loading messages</h3><p>Please try refreshing</p></div>';
+      }
+    }
+
+    function renderMessages(messages) {
+      const list = document.getElementById('msgList');
+      document.getElementById('totalCount').textContent = messages.length;
+      document.getElementById('unreadCount').textContent = messages.filter(m => !m.read).length;
+      const today = new Date().toDateString();
+      document.getElementById('todayCount').textContent = messages.filter(m => new Date(m.date).toDateString() === today).length;
+
+      if (messages.length === 0) {
+        list.innerHTML = '<div class="empty-state"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><h3>No messages yet</h3><p>Messages from your contact form will appear here</p></div>';
+        return;
+      }
+
+      list.innerHTML = messages.map(msg => {
+        const initials = msg.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+        const date = new Date(msg.date);
+        const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        const timeStr = date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        return `<div class="msg-card ${msg.read ? '' : 'unread'}" data-id="${msg.id}">
+          <div class="msg-card-top">
+            <div class="msg-card-from">
+              <div class="msg-avatar">${initials}</div>
+              <div><div class="msg-name">${esc(msg.name)}</div><div class="msg-email">${esc(msg.email)}</div></div>
+            </div>
+            <div class="msg-date">${dateStr} ${timeStr}</div>
+          </div>
+          <div class="msg-subject">${esc(msg.subject)}</div>
+          <div class="msg-body">${esc(msg.message)}</div>
+          <div class="msg-card-actions">
+            <button class="msg-action reply" onclick="replyTo('${esc(msg.email)}','${esc(msg.subject)}')">Reply</button>
+            <button class="msg-action" onclick="markRead(${msg.id})">${msg.read ? 'Read' : 'Mark Read'}</button>
+            <button class="msg-action delete" onclick="deleteMsg(${msg.id})">Delete</button>
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    function esc(str) { const d = document.createElement('div'); d.textContent = str; return d.innerHTML; }
+
+    async function markRead(id) {
+      await fetch(`/api/messages/${id}/read`, { method: 'PUT' });
+      loadMessages();
+    }
+
+    async function deleteMsg(id) {
+      if (!confirm('Delete this message?')) return;
+      await fetch(`/api/messages/${id}`, { method: 'DELETE' });
+      loadMessages();
+    }
+
+    function replyTo(email, subject) {
+      window.open(`mailto:${email}?subject=Re: ${subject}`, '_blank');
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', async () => {
+      await fetch('/api/logout', { method: 'POST' });
+      window.location.href = '/login.html';
+    });
+
+    document.getElementById('refreshBtn').addEventListener('click', loadMessages);
+
+    checkAuth().then(auth => { if (auth) loadMessages(); });
+  </script>
+</body>
+</html>
